@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Globe, Clock } from 'lucide-react';
+import { Phone, Mail, MapPin, Globe, Clock, Loader2 } from 'lucide-react';
 import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
+
+const API_BASE = 'http://localhost:5000/api';
 
 const Footer = () => {
   const [formData, setFormData] = useState({
@@ -10,21 +12,71 @@ const Footer = () => {
     message: ''
   });
   const [newsletterEmail, setNewsletterEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-  const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
 
-  const handleSubmit = (e) => {
+  // Inquiry form states
+  const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [inquiryError, setInquiryError] = useState('');
+
+  // Newsletter states
+  const [newsletterSubmitting, setNewsletterSubmitting] = useState(false);
+  const [newsletterSubmitted, setNewsletterSubmitted] = useState(false);
+  const [newsletterError, setNewsletterError] = useState('');
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
-    setTimeout(() => setSubmitted(false), 4000);
-    setFormData({ name: '', email: '', phone: '', message: '' });
+    setSubmitting(true);
+    setInquiryError('');
+
+    try {
+      const res = await fetch(`${API_BASE}/inquiry`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setSubmitted(true);
+        setFormData({ name: '', email: '', phone: '', message: '' });
+        setTimeout(() => setSubmitted(false), 6000);
+      } else {
+        setInquiryError(data.message || 'Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      setInquiryError('Unable to connect to the server. Please call us directly.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
-  const handleNewsletterSubmit = (e) => {
+  const handleNewsletterSubmit = async (e) => {
     e.preventDefault();
-    setNewsletterSubmitted(true);
-    setTimeout(() => setNewsletterSubmitted(false), 4000);
-    setNewsletterEmail('');
+    setNewsletterSubmitting(true);
+    setNewsletterError('');
+
+    try {
+      const res = await fetch(`${API_BASE}/newsletter`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: newsletterEmail }),
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        setNewsletterSubmitted(true);
+        setNewsletterEmail('');
+        setTimeout(() => setNewsletterSubmitted(false), 6000);
+      } else {
+        setNewsletterError(data.message || 'Something went wrong. Please try again.');
+      }
+    } catch (err) {
+      setNewsletterError('Unable to connect. Please try again later.');
+    } finally {
+      setNewsletterSubmitting(false);
+    }
   };
 
   return (
@@ -120,7 +172,7 @@ const Footer = () => {
 
               {submitted ? (
                 <div className="bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-300 p-3 rounded-lg text-xs font-semibold text-center my-4">
-                  ✓ Thank you! Your inquiry has been sent.
+                  ✓ Thank you! Your inquiry has been saved. We'll contact you within 24 hours.
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-2">
@@ -128,41 +180,51 @@ const Footer = () => {
                     <input 
                       type="text" 
                       required
+                      disabled={submitting}
                       placeholder="Your Name" 
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full text-[11px] px-2.5 py-1.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-[#121417] text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#cda85c]" 
+                      className="w-full text-[11px] px-2.5 py-1.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-[#121417] text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#cda85c] disabled:opacity-60" 
                     />
                     <input 
                       type="email" 
                       required
+                      disabled={submitting}
                       placeholder="Email Address" 
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full text-[11px] px-2.5 py-1.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-[#121417] text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#cda85c]" 
+                      className="w-full text-[11px] px-2.5 py-1.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-[#121417] text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#cda85c] disabled:opacity-60" 
                     />
                   </div>
                   <input 
                     type="tel" 
                     required
+                    disabled={submitting}
                     placeholder="Phone Number" 
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    className="w-full text-[11px] px-2.5 py-1.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-[#121417] text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#cda85c]" 
+                    className="w-full text-[11px] px-2.5 py-1.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-[#121417] text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#cda85c] disabled:opacity-60" 
                   />
                   <textarea 
                     rows="2" 
                     required
+                    disabled={submitting}
                     placeholder="Your Message" 
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                    className="w-full text-[11px] px-2.5 py-1.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-[#121417] text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#cda85c] resize-none"
+                    className="w-full text-[11px] px-2.5 py-1.5 rounded-lg border border-gray-300 dark:border-gray-700 bg-gray-50 dark:bg-[#121417] text-gray-900 dark:text-white placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#cda85c] resize-none disabled:opacity-60"
                   ></textarea>
+                  {inquiryError && (
+                    <p className="text-red-500 dark:text-red-400 text-[10px] font-semibold">{inquiryError}</p>
+                  )}
                   <button 
                     type="submit" 
-                    className="w-full bg-[#cda85c] hover:bg-[#b89448] text-gray-950 font-bold py-2 rounded-lg text-[11px] tracking-wider uppercase transition-all shadow-md"
+                    disabled={submitting}
+                    className="w-full bg-[#cda85c] hover:bg-[#b89448] text-gray-950 font-bold py-2 rounded-lg text-[11px] tracking-wider uppercase transition-all shadow-md flex items-center justify-center gap-1.5 disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    SEND MESSAGE
+                    {submitting ? (
+                      <><Loader2 size={12} className="animate-spin" /> SENDING...</>
+                    ) : 'SEND MESSAGE'}
                   </button>
                 </form>
               )}
@@ -241,25 +303,32 @@ const Footer = () => {
 
             {newsletterSubmitted ? (
               <div className="bg-[#cda85c]/20 border border-[#cda85c] text-[#cda85c] text-[11px] p-2 rounded-lg font-bold">
-                ✓ Subscribed successfully!
+                ✓ Subscribed! Check your inbox for a welcome email.
               </div>
             ) : (
-              <form onSubmit={handleNewsletterSubmit} className="flex items-center">
-                <input 
-                  type="email" 
-                  required
-                  placeholder="Enter your email" 
-                  value={newsletterEmail}
-                  onChange={(e) => setNewsletterEmail(e.target.value)}
-                  className="w-full bg-white dark:bg-[#181a1f] border border-gray-300 dark:border-gray-700/80 text-xs px-3 py-2 text-gray-900 dark:text-white placeholder-gray-500 rounded-l-md focus:outline-none focus:border-[#cda85c]"
-                />
-                <button 
-                  type="submit" 
-                  className="bg-[#cda85c] hover:bg-[#b89448] text-gray-950 font-bold text-[10px] px-3.5 py-2 rounded-r-md uppercase transition-colors tracking-wider whitespace-nowrap"
-                >
-                  SUBSCRIBE
-                </button>
-              </form>
+              <>
+                <form onSubmit={handleNewsletterSubmit} className="flex items-center">
+                  <input 
+                    type="email" 
+                    required
+                    disabled={newsletterSubmitting}
+                    placeholder="Enter your email" 
+                    value={newsletterEmail}
+                    onChange={(e) => { setNewsletterEmail(e.target.value); setNewsletterError(''); }}
+                    className="w-full bg-white dark:bg-[#181a1f] border border-gray-300 dark:border-gray-700/80 text-xs px-3 py-2 text-gray-900 dark:text-white placeholder-gray-500 rounded-l-md focus:outline-none focus:border-[#cda85c] disabled:opacity-60"
+                  />
+                  <button 
+                    type="submit"
+                    disabled={newsletterSubmitting}
+                    className="bg-[#cda85c] hover:bg-[#b89448] text-gray-950 font-bold text-[10px] px-3.5 py-2 rounded-r-md uppercase transition-colors tracking-wider whitespace-nowrap flex items-center gap-1 disabled:opacity-70 disabled:cursor-not-allowed"
+                  >
+                    {newsletterSubmitting ? <Loader2 size={12} className="animate-spin" /> : 'SUBSCRIBE'}
+                  </button>
+                </form>
+                {newsletterError && (
+                  <p className="text-red-500 dark:text-red-400 text-[10px] font-semibold mt-1.5">{newsletterError}</p>
+                )}
+              </>
             )}
           </div>
 

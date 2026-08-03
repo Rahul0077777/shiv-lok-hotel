@@ -65,39 +65,39 @@ const Amenities = () => {
       case 'Included':
       case 'Yes':
         return (
-          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30">
-            <CheckCircle2 className="w-3.5 h-3.5" /> Included
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wide uppercase bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border border-emerald-500/30 whitespace-nowrap">
+            <CheckCircle2 className="w-3 h-3 flex-shrink-0" /> Included
           </span>
         );
       case '24 Hours':
         return (
-          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-sky-500/10 text-sky-700 dark:text-sky-400 border border-sky-500/30">
-            <Clock className="w-3.5 h-3.5" /> 24 Hours
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wide uppercase bg-sky-500/10 text-sky-700 dark:text-sky-400 border border-sky-500/30 whitespace-nowrap">
+            <Clock className="w-3 h-3 flex-shrink-0" /> 24 Hours
           </span>
         );
       case 'Available':
         return (
-          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/30">
-            <Sparkles className="w-3.5 h-3.5" /> Available
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wide uppercase bg-indigo-500/10 text-indigo-700 dark:text-indigo-400 border border-indigo-500/30 whitespace-nowrap">
+            <Sparkles className="w-3 h-3 flex-shrink-0" /> Available
           </span>
         );
       case 'On Request':
         return (
-          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/30">
-            <AlertCircle className="w-3.5 h-3.5 text-amber-600" /> On Request
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wide uppercase bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/30 whitespace-nowrap">
+            <AlertCircle className="w-3 h-3 text-amber-600 flex-shrink-0" /> On Request
           </span>
         );
       case 'Chargeable':
         return (
-          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-purple-500/10 text-purple-800 dark:text-purple-300 border border-purple-500/30">
-            <ShieldAlert className="w-3.5 h-3.5 text-purple-600" /> Chargeable
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wide uppercase bg-purple-500/10 text-purple-800 dark:text-purple-300 border border-purple-500/30 whitespace-nowrap">
+            <ShieldAlert className="w-3 h-3 text-purple-600 flex-shrink-0" /> Chargeable
           </span>
         );
       case 'Not Available':
       case 'No':
         return (
-          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-bold tracking-wider uppercase bg-rose-500/10 text-rose-700 dark:text-rose-400 border border-rose-500/30">
-            <XCircle className="w-3.5 h-3.5 text-rose-500" /> N/A
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wide uppercase bg-rose-500/10 text-rose-700 dark:text-rose-400 border border-rose-500/30 whitespace-nowrap">
+            <XCircle className="w-3 h-3 text-rose-500 flex-shrink-0" /> N/A
           </span>
         );
       default:
@@ -156,19 +156,16 @@ const Amenities = () => {
 
         {/* TAB 1: General Hotel Facilities */}
         {activeTab === 'hotel' && (
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 animate-fadeIn">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 animate-fadeIn">
             {hotelFacilities.map((item, idx) => (
               <div 
                 key={idx} 
                 className="bg-white dark:bg-[#181a1f] rounded-xl p-3 sm:p-4 border border-gray-200/80 dark:border-gray-800 shadow-sm hover:shadow-xl hover:border-[#cda85c]/60 hover:-translate-y-0.5 transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
-                  {/* Top Header Row */}
-                  <div className="flex items-center justify-between mb-2 sm:mb-3">
-                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-amber-500/10 text-[#cda85c] flex items-center justify-center group-hover:bg-[#cda85c] group-hover:text-gray-950 transition-all duration-300 shadow-sm flex-shrink-0">
-                      {React.cloneElement(item.icon, { className: 'w-4 h-4' })}
-                    </div>
-                    {renderBadge(item.status)}
+                  {/* Icon */}
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-amber-500/10 text-[#cda85c] flex items-center justify-center group-hover:bg-[#cda85c] group-hover:text-gray-950 transition-all duration-300 shadow-sm flex-shrink-0 mb-2 sm:mb-3">
+                    {React.cloneElement(item.icon, { className: 'w-4 h-4' })}
                   </div>
 
                   {/* Category & Title */}
@@ -183,6 +180,11 @@ const Amenities = () => {
                   <p className="text-gray-600 dark:text-gray-400 text-[10px] sm:text-[11px] font-light mt-1 leading-relaxed transition-colors line-clamp-3 sm:line-clamp-none">
                     {item.desc}
                   </p>
+
+                  {/* Badge below description — never overlaps */}
+                  <div className="mt-2">
+                    {renderBadge(item.status)}
+                  </div>
                 </div>
               </div>
             ))}
@@ -191,26 +193,28 @@ const Amenities = () => {
 
         {/* TAB 2: In-Room Facilities */}
         {activeTab === 'room' && (
-          <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 animate-fadeIn">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 animate-fadeIn">
             {roomFacilities.map((item, idx) => (
               <div 
                 key={idx} 
-                className="bg-white dark:bg-[#181a1f] rounded-2xl p-5 border border-gray-200/80 dark:border-gray-800 shadow-sm hover:shadow-xl hover:border-[#cda85c]/60 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-between gap-3 group"
+                className="bg-white dark:bg-[#181a1f] rounded-2xl px-4 py-3 sm:p-5 border border-gray-200/80 dark:border-gray-800 shadow-sm hover:shadow-xl hover:border-[#cda85c]/60 hover:-translate-y-0.5 transition-all duration-300 flex items-center justify-between gap-3 group"
               >
-                <div className="flex items-center space-x-3.5 min-w-0">
-                  <div className="w-10 h-10 rounded-xl bg-amber-500/10 text-[#cda85c] flex items-center justify-center flex-shrink-0 group-hover:bg-[#cda85c] group-hover:text-gray-950 transition-colors">
+                {/* Left: icon + category + name */}
+                <div className="flex items-center gap-3 min-w-0">
+                  <div className="w-9 h-9 rounded-xl bg-amber-500/10 text-[#cda85c] flex items-center justify-center flex-shrink-0 group-hover:bg-[#cda85c] group-hover:text-gray-950 transition-colors">
                     {item.icon}
                   </div>
                   <div className="min-w-0">
-                    <span className="text-[9px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest block">
+                    <span className="text-[9px] font-bold text-gray-400 dark:text-gray-500 uppercase tracking-widest block leading-none mb-0.5">
                       {item.category}
                     </span>
-                    <h3 className="text-xs font-bold text-gray-900 dark:text-white truncate group-hover:text-[#cda85c] transition-colors">
+                    <h3 className="text-xs font-bold text-gray-900 dark:text-white leading-tight group-hover:text-[#cda85c] transition-colors truncate">
                       {item.name}
                     </h3>
                   </div>
                 </div>
 
+                {/* Right: badge — flex-shrink-0 so it never gets squeezed */}
                 <div className="flex-shrink-0">
                   {renderBadge(item.status)}
                 </div>
