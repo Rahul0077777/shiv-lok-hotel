@@ -1,14 +1,128 @@
-import React, { useRef, useState } from 'react';
-import { ChevronRight, ArrowRight, X, Check, Phone, MessageCircle, AlertTriangle, ShieldCheck } from 'lucide-react';
+import React, { useRef, useState, useEffect } from 'react';
+import { ChevronRight, ChevronLeft, ArrowRight, X, Check, Phone, MessageCircle, AlertTriangle, ShieldCheck } from 'lucide-react';
 
+// ── Mini image carousel inside each room card ──────────────────────────────
+const RoomCarousel = ({ images, title }) => {
+  const [current, setCurrent] = useState(0);
+  const timerRef = useRef(null);
+
+  const startTimer = useCallback(() => {
+    clearInterval(timerRef.current);
+    timerRef.current = setInterval(() => {
+      setCurrent(prev => (prev + 1) % images.length);
+    }, 3500);
+  }, [images.length]);
+
+  useEffect(() => {
+    startTimer();
+    return () => clearInterval(timerRef.current);
+  }, [startTimer]);
+
+  const go = (dir, e) => {
+    e.stopPropagation();
+    setCurrent(prev => (prev + dir + images.length) % images.length);
+    startTimer();
+  };
+
+  return (
+    <div className="relative h-48 overflow-hidden rounded-t-2xl group/carousel">
+      {/* Images */}
+      {images.map((src, idx) => (
+        <img
+          key={idx}
+          src={src}
+          alt={`${title} ${idx + 1}`}
+          className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out ${
+            idx === current ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
+          }`}
+        />
+      ))}
+
+      {/* Prev / Next arrows — show on hover */}
+      <button
+        onClick={(e) => go(-1, e)}
+        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-7 h-7 bg-black/50 hover:bg-[#cda85c] text-white rounded-full flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-200 border border-white/20"
+      >
+        <ChevronLeft size={14} />
+      </button>
+      <button
+        onClick={(e) => go(1, e)}
+        className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-7 h-7 bg-black/50 hover:bg-[#cda85c] text-white rounded-full flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-200 border border-white/20"
+      >
+        <ChevronRight size={14} />
+      </button>
+
+      {/* Dot indicators */}
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+        {images.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={(e) => { e.stopPropagation(); setCurrent(idx); startTimer(); }}
+            className={`rounded-full transition-all duration-300 ${
+              idx === current
+                ? 'w-4 h-1.5 bg-[#cda85c]'
+                : 'w-1.5 h-1.5 bg-white/60 hover:bg-white'
+            }`}
+          />
+        ))}
+      </div>
+
+      {/* Guests badge */}
+      <div className="absolute bottom-3 left-3 bg-gray-950/80 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest border border-white/20 z-10">
+        {/* passed via parent */}
+      </div>
+    </div>
+  );
+};
+
+// ── Modal image strip ──────────────────────────────────────────────────────
+const ModalImageStrip = ({ images, title }) => {
+  const [active, setActive] = useState(0);
+  return (
+    <div className="relative h-56 w-full">
+      {images.map((src, idx) => (
+        <img
+          key={idx}
+          src={src}
+          alt={`${title} view ${idx + 1}`}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+            idx === active ? 'opacity-100' : 'opacity-0'
+          }`}
+        />
+      ))}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#121417] via-transparent to-transparent" />
+
+      {/* Thumbnail strip */}
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+        {images.map((src, idx) => (
+          <button
+            key={idx}
+            onClick={() => setActive(idx)}
+            className={`rounded-lg overflow-hidden border-2 transition-all ${
+              idx === active ? 'border-[#cda85c] scale-110' : 'border-white/30 opacity-60 hover:opacity-90'
+            }`}
+            style={{ width: 40, height: 30 }}
+          >
+            <img src={src} alt="" className="w-full h-full object-cover" />
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+// ── Main Rooms Component ────────────────────────────────────────────────────
 const Rooms = () => {
   const scrollContainerRef = useRef(null);
   const [selectedRoom, setSelectedRoom] = useState(null);
 
+  // Extra images shared across all rooms (washroom + lift)
+  const extraImages = ['/gal_washroom.png', '/gal_washroom_door.png', '/gal_lift.png'];
+
   const roomsData = [
     {
       title: 'Deluxe Room',
-      image: '/room_deluxe.png',
+      images: ['/room_deluxe.png', ...extraImages],
       guests: '2 Adults',
       bed: '1 Bed',
       size: '250 sq.ft',
@@ -19,7 +133,7 @@ const Rooms = () => {
     },
     {
       title: 'Premium Room',
-      image: '/room_executive.png',
+      images: ['/room_executive.png', ...extraImages],
       guests: '2 Adults',
       bed: '1 Bed',
       size: '300 sq.ft',
@@ -30,7 +144,7 @@ const Rooms = () => {
     },
     {
       title: 'Family Suite',
-      image: '/room_family.png',
+      images: ['/room_family.png', ...extraImages],
       guests: '4 Adults',
       bed: '2 Beds',
       size: '450 sq.ft',
@@ -104,16 +218,24 @@ const Rooms = () => {
                   className="min-w-[280px] w-[280px] sm:min-w-[310px] sm:w-[310px] flex-shrink-0 bg-white dark:bg-[#181a1f] rounded-2xl overflow-hidden shadow-sm border border-gray-200/80 dark:border-gray-800 group snap-start cursor-pointer hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
                 >
                   <div>
-                    {/* Room Image */}
-                    <div className="relative h-48 overflow-hidden rounded-t-2xl">
-                      <img 
-                        src={room.image} 
-                        alt={room.title} 
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                      />
-                      <div className="absolute bottom-3 left-3 bg-gray-950/80 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest border border-white/20">
-                        {room.guests}
-                      </div>
+                    {/* Room Image Carousel */}
+                    <div className="relative h-48 overflow-hidden rounded-t-2xl group/carousel">
+                      {room.images.map((src, idx2) => (
+                        <img
+                          key={idx2}
+                          src={src}
+                          alt={`${room.title} ${idx2 + 1}`}
+                          className="absolute inset-0 w-full h-full object-cover"
+                          style={{
+                            opacity: 0,
+                            transition: 'opacity 0.7s ease, transform 0.7s ease',
+                          }}
+                          ref={el => {
+                            if (el) el.dataset.roomIdx = `${index}-${idx2}`;
+                          }}
+                        />
+                      ))}
+                      <CarouselInner images={room.images} title={room.title} guests={room.guests} />
                     </div>
                     
                     {/* Room Details */}
@@ -184,19 +306,19 @@ const Rooms = () => {
       {/* Full Specs & Booking Modal */}
       {selectedRoom && (
         <div className="fixed inset-0 z-[100] flex items-start justify-center p-4 sm:p-6 pt-32 sm:pt-40 pb-8 bg-gray-950/85 backdrop-blur-md animate-fadeIn overflow-y-auto">
-          <div className="bg-[#121417] border border-gray-800 rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl text-white relative max-h-[75vh] overflow-y-auto my-auto sm:my-0">
+          <div className="bg-[#121417] border border-gray-800 rounded-3xl max-w-2xl w-full shadow-2xl text-white relative max-h-[75vh] overflow-y-auto my-auto sm:my-0">
             
-            {/* Modal Header Image */}
-            <div className="relative h-56 w-full">
-              <img src={selectedRoom.image} alt={selectedRoom.title} className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#121417] via-transparent to-transparent" />
+            {/* Modal Header – image strip with thumbnails */}
+            <div className="relative h-56 w-full rounded-t-3xl overflow-hidden">
+              <ModalGallery images={selectedRoom.images} title={selectedRoom.title} />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#121417] via-transparent to-transparent pointer-events-none" />
               <button 
                 onClick={() => setSelectedRoom(null)}
-                className="absolute top-4 right-4 w-9 h-9 bg-gray-900/80 hover:bg-red-600 text-white rounded-full flex items-center justify-center transition-colors border border-white/20 shadow-lg"
+                className="absolute top-4 right-4 w-9 h-9 bg-gray-900/80 hover:bg-red-600 text-white rounded-full flex items-center justify-center transition-colors border border-white/20 shadow-lg z-20"
               >
                 <X size={18} />
               </button>
-              <div className="absolute bottom-4 left-6">
+              <div className="absolute bottom-4 left-6 z-10">
                 <span className="text-[#cda85c] text-[11px] font-bold tracking-widest uppercase block mb-1">
                   SHIVLOK PALACE ACCOMMODATION
                 </span>
@@ -268,7 +390,6 @@ const Rooms = () => {
               </div>
 
             </div>
-
           </div>
         </div>
       )}
@@ -283,6 +404,129 @@ const Rooms = () => {
         }
       `}} />
     </div>
+  );
+};
+
+// ── Self-contained card carousel (no state leak) ─────────────────────────
+const CarouselInner = ({ images, title, guests }) => {
+  const [current, setCurrent] = useState(0);
+
+  const go = (next, e) => {
+    e.stopPropagation();
+    setCurrent((next + images.length) % images.length);
+  };
+
+  return (
+    <>
+      {images.map((src, idx) => (
+        <img
+          key={idx}
+          src={src}
+          alt={`${title} ${idx + 1}`}
+          className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ${
+            idx === current ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
+          }`}
+        />
+      ))}
+
+      {/* Prev */}
+      <button
+        onClick={e => go(current - 1, e)}
+        className="absolute left-2 top-1/2 -translate-y-1/2 z-10 w-7 h-7 bg-black/50 hover:bg-[#cda85c] text-white rounded-full flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-200 border border-white/20"
+      >
+        <ChevronLeft size={14} />
+      </button>
+      {/* Next */}
+      <button
+        onClick={e => go(current + 1, e)}
+        className="absolute right-2 top-1/2 -translate-y-1/2 z-10 w-7 h-7 bg-black/50 hover:bg-[#cda85c] text-white rounded-full flex items-center justify-center opacity-0 group-hover/carousel:opacity-100 transition-all duration-200 border border-white/20"
+      >
+        <ChevronRight size={14} />
+      </button>
+
+      {/* Dots */}
+      <div className="absolute bottom-2 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
+        {images.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={e => { e.stopPropagation(); setCurrent(idx); }}
+            className={`rounded-full transition-all duration-300 ${
+              idx === current ? 'w-4 h-1.5 bg-[#cda85c]' : 'w-1.5 h-1.5 bg-white/60 hover:bg-white'
+            }`}
+          />
+        ))}
+      </div>
+
+      {/* Guests badge */}
+      <div className="absolute bottom-3 left-3 bg-gray-950/80 backdrop-blur-md text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest border border-white/20 z-10">
+        {guests}
+      </div>
+
+      {/* Image counter */}
+      <div className="absolute top-2 right-2 bg-black/50 backdrop-blur-sm text-white text-[9px] font-bold px-2 py-0.5 rounded-full border border-white/20 z-10">
+        {current + 1}/{images.length}
+      </div>
+    </>
+  );
+};
+
+// ── Modal full gallery strip ─────────────────────────────────────────────
+const ModalGallery = ({ images, title }) => {
+  const [active, setActive] = useState(0);
+
+  const go = (dir) => setActive(prev => (prev + dir + images.length) % images.length);
+
+  return (
+    <>
+      {/* Images */}
+      {images.map((src, idx) => (
+        <img
+          key={idx}
+          src={src}
+          alt={`${title} ${idx + 1}`}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+            idx === active ? 'opacity-100' : 'opacity-0'
+          }`}
+        />
+      ))}
+
+      {/* Prev Arrow */}
+      <button
+        onClick={() => go(-1)}
+        className="absolute left-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 bg-black/60 hover:bg-[#cda85c] text-white hover:text-gray-950 rounded-full flex items-center justify-center transition-all border border-white/20 shadow-lg"
+      >
+        <ChevronLeft size={18} />
+      </button>
+
+      {/* Next Arrow */}
+      <button
+        onClick={() => go(1)}
+        className="absolute right-3 top-1/2 -translate-y-1/2 z-20 w-9 h-9 bg-black/60 hover:bg-[#cda85c] text-white hover:text-gray-950 rounded-full flex items-center justify-center transition-all border border-white/20 shadow-lg"
+      >
+        <ChevronRight size={18} />
+      </button>
+
+      {/* Image counter top-right */}
+      <div className="absolute top-3 right-3 z-20 bg-black/60 backdrop-blur-sm text-white text-[10px] font-bold px-2.5 py-1 rounded-full border border-white/20">
+        {active + 1} / {images.length}
+      </div>
+
+      {/* Thumbnail strip — placed at top-left so it doesn't overlap title */}
+      <div className="absolute top-3 left-3 flex gap-1.5 z-20">
+        {images.map((src, idx) => (
+          <button
+            key={idx}
+            onClick={() => setActive(idx)}
+            className={`rounded-md overflow-hidden border-2 transition-all ${
+              idx === active ? 'border-[#cda85c] scale-110' : 'border-white/30 opacity-60 hover:opacity-90'
+            }`}
+            style={{ width: 38, height: 28 }}
+          >
+            <img src={src} alt="" className="w-full h-full object-cover" />
+          </button>
+        ))}
+      </div>
+    </>
   );
 };
 
