@@ -7,6 +7,10 @@ const rateLimit = require('express-rate-limit');
 // ─── Routes ─────────────────────────────────────────────────────────
 const inquiryRoutes = require('./routes/inquiry');
 const newsletterRoutes = require('./routes/newsletter');
+const bookingRoutes = require('./routes/booking');
+const reviewsRoutes = require('./routes/reviews');
+const adminRoutes = require('./routes/admin');
+const tableReservationRoutes = require('./routes/tableReservation');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -53,10 +57,17 @@ const limiter = rateLimit({
 
 app.use('/api/inquiry', limiter);
 app.use('/api/newsletter', limiter);
+app.use('/api/booking', limiter);
+app.use('/api/reviews', limiter);
+app.use('/api/table-reservation', limiter);
 
 // ─── Routes ──────────────────────────────────────────────────────────
 app.use('/api/inquiry', inquiryRoutes);
 app.use('/api/newsletter', newsletterRoutes);
+app.use('/api/booking', bookingRoutes);
+app.use('/api/reviews', reviewsRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/table-reservation', tableReservationRoutes);
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {

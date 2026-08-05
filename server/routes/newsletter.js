@@ -3,6 +3,7 @@ const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const Newsletter = require('../models/Newsletter');
 const { sendNewsletterWelcome } = require('../utils/mailer');
+const adminAuth = require('../middleware/adminAuth');
 
 // Validation rules
 const newsletterValidation = [
@@ -65,7 +66,7 @@ router.post('/', newsletterValidation, async (req, res) => {
 });
 
 // GET /api/newsletter (admin view — list all subscribers)
-router.get('/', async (req, res) => {
+router.get('/', adminAuth, async (req, res) => {
   try {
     const subscribers = await Newsletter.find({ isActive: true })
       .sort({ createdAt: -1 })
