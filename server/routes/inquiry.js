@@ -3,6 +3,7 @@ const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const Inquiry = require('../models/Inquiry');
 const { sendInquiryEmails } = require('../utils/mailer');
+const adminAuth = require('../middleware/adminAuth');
 
 // Validation rules
 const inquiryValidation = [
@@ -66,7 +67,7 @@ router.post('/', inquiryValidation, async (req, res) => {
 });
 
 // GET /api/inquiry (admin view — list all inquiries, newest first)
-router.get('/', async (req, res) => {
+router.get('/', adminAuth, async (req, res) => {
   try {
     const inquiries = await Inquiry.find()
       .sort({ createdAt: -1 })
