@@ -28,7 +28,7 @@ function App() {
   };
 
   return (
-    <div className={`min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-white dark:bg-[#0f1114] text-gray-900 dark:text-gray-100 flex flex-col font-sans transition-colors duration-300 ${isDarkMode ? 'dark' : ''}`}>
+    <div className={`min-h-screen w-full max-w-[100vw] overflow-x-hidden bg-white dark:bg-[#0f1114] text-gray-900 dark:text-gray-100 flex flex-col font-sans transition-colors duration-300 pb-16 sm:pb-0 ${isDarkMode ? 'dark' : ''}`}>
       <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
       
       <section id="hero">

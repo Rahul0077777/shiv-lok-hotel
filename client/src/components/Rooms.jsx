@@ -126,8 +126,9 @@ const Rooms = () => {
       guests: '2 Adults',
       bed: '1 Bed',
       size: '250 sq.ft',
-      rawPrice: '3,200',
-      price: '₹3,200 + Taxes',
+      rawPrice: '2,500',
+      originalPrice: '₹3,200',
+      price: '₹2,500 + Taxes',
       extra: '*Extra Guest Chargeable',
       desc: 'Designed for relaxation and comfort after exploring the sacred city of Varanasi, offering soothing interiors and state-of-the-art modern electronics.'
     },
@@ -137,8 +138,9 @@ const Rooms = () => {
       guests: '2 Adults',
       bed: '1 Bed',
       size: '300 sq.ft',
-      rawPrice: '4,500',
-      price: '₹4,500 + Taxes',
+      rawPrice: '3,500',
+      originalPrice: '₹4,500',
+      price: '₹3,500 + Taxes',
       extra: '*Extra Guest Chargeable',
       desc: 'An upgraded luxury sanctuary boasting enhanced floor space, sophisticated plush bedding, and an expansive work desk area for discerning travelers.'
     },
@@ -148,8 +150,9 @@ const Rooms = () => {
       guests: '4 Adults',
       bed: '2 Beds',
       size: '450 sq.ft',
-      rawPrice: '7,500',
-      price: '₹7,500 + Taxes',
+      rawPrice: '4,500',
+      originalPrice: '₹7,500',
+      price: '₹4,500 + Taxes',
       extra: '*Extra Guest Chargeable',
       desc: 'Our most spacious accommodation specifically tailored for families and pilgrim groups of up to 4 adults, featuring dual bedding configurations and generous living area.'
     }
@@ -271,11 +274,16 @@ const Rooms = () => {
                       {/* Price */}
                       <div className="pt-2 border-t border-gray-100 dark:border-gray-800 transition-colors">
                         <p className="text-xs text-gray-500 dark:text-gray-400 mb-1 font-medium transition-colors">
-                          Tariff: <span className="text-base font-bold text-gray-900 dark:text-white">{room.price}</span> / Night
+                          Tariff: <span className="line-through text-gray-400 dark:text-gray-500 text-sm mr-1">{room.originalPrice}</span><span className="text-base font-bold text-gray-900 dark:text-white">₹{room.rawPrice}</span> <span className="text-xs text-gray-500">+ Taxes / Night</span>
                         </p>
-                        <span className="inline-block px-2.5 py-0.5 bg-amber-50 dark:bg-[#cda85c]/20 text-amber-800 dark:text-amber-300 border border-amber-200/80 dark:border-[#cda85c]/40 rounded text-[10px] font-bold tracking-wide transition-colors">
-                          {room.extra}
-                        </span>
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <span className="inline-block px-2.5 py-0.5 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-700/50 rounded text-[10px] font-bold tracking-wide">
+                            🏷️ Special Price
+                          </span>
+                          <span className="inline-block px-2.5 py-0.5 bg-amber-50 dark:bg-[#cda85c]/20 text-amber-800 dark:text-amber-300 border border-amber-200/80 dark:border-[#cda85c]/40 rounded text-[10px] font-bold tracking-wide transition-colors">
+                            {room.extra}
+                          </span>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -333,7 +341,11 @@ const Rooms = () => {
               <div className="bg-[#181a1f] p-4 rounded-2xl border border-gray-800 flex flex-wrap items-center justify-between gap-4">
                 <div>
                   <span className="text-xs text-gray-400 block">Room Tariff (Per Night)</span>
-                  <span className="text-xl sm:text-2xl font-bold text-[#cda85c]">{selectedRoom.price}</span>
+                  <div className="flex items-baseline gap-2">
+                    <span className="line-through text-gray-500 text-sm">{selectedRoom.originalPrice}</span>
+                    <span className="text-xl sm:text-2xl font-bold text-[#cda85c]">₹{selectedRoom.rawPrice} + Taxes</span>
+                  </div>
+                  <span className="inline-block mt-1 px-2.5 py-0.5 bg-emerald-900/40 text-emerald-300 border border-emerald-700/50 rounded text-[10px] font-bold tracking-wide">🏷️ Special Discounted Price</span>
                 </div>
                 <div className="text-right">
                   <span className="text-xs text-gray-400 block">Standard Occupancy</span>

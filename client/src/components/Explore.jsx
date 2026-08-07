@@ -1,7 +1,8 @@
 import React from 'react';
-import { ArrowRight, MapPin, Footprints, Navigation } from 'lucide-react';
+import { MapPin, Footprints, Navigation, ExternalLink } from 'lucide-react';
 
 const Explore = () => {
+
   const places = [
     {
       title: 'Kashi Vishwanath Temple',
@@ -9,7 +10,11 @@ const Explore = () => {
       time: '8–10 min walk',
       isWalk: true,
       tag: 'Walking Distance',
-      url: '/loc_kashi.png'
+      tagColor: 'bg-emerald-600',
+      emoji: '🛕',
+      url: '/loc_kashi.png',
+      mapsQuery: 'Kashi+Vishwanath+Temple+Varanasi',
+      desc: 'India\'s most sacred Shiva temple – walkable from the hotel'
     },
     {
       title: 'Dashashwamedh Ghat',
@@ -17,7 +22,11 @@ const Explore = () => {
       time: '10–12 min walk',
       isWalk: true,
       tag: 'Ganga Aarti Ghat',
-      url: '/loc_dashashwamedh.png'
+      tagColor: 'bg-orange-600',
+      emoji: '🪔',
+      url: '/loc_dashashwamedh.png',
+      mapsQuery: 'Dashashwamedh+Ghat+Varanasi',
+      desc: 'Famous for the spectacular evening Ganga Aarti ceremony'
     },
     {
       title: 'Assi Ghat',
@@ -25,7 +34,11 @@ const Explore = () => {
       time: '10–15 min drive',
       isWalk: false,
       tag: 'Popular Ghat',
-      url: '/loc_assi.png'
+      tagColor: 'bg-blue-600',
+      emoji: '🌊',
+      url: '/loc_assi.png',
+      mapsQuery: 'Assi+Ghat+Varanasi',
+      desc: 'Beloved ghat known for sunrise yoga and boat rides'
     },
     {
       title: 'Varanasi Junction Railway Station',
@@ -33,7 +46,11 @@ const Explore = () => {
       time: '15 min drive',
       isWalk: false,
       tag: 'Railway Hub',
-      url: '/loc_railway.png'
+      tagColor: 'bg-gray-700',
+      emoji: '🚂',
+      url: '/loc_railway.png',
+      mapsQuery: 'Varanasi+Junction+Railway+Station',
+      desc: 'Main railway station – well connected across India'
     },
     {
       title: 'Banaras Hindu University (BHU)',
@@ -41,7 +58,11 @@ const Explore = () => {
       time: '18 min drive',
       isWalk: false,
       tag: 'University Landmark',
-      url: '/loc_bhu.png'
+      tagColor: 'bg-purple-700',
+      emoji: '🎓',
+      url: '/loc_bhu.png',
+      mapsQuery: 'Banaras+Hindu+University+Varanasi',
+      desc: 'One of India\'s largest residential universities'
     },
     {
       title: 'Sarnath',
@@ -49,7 +70,11 @@ const Explore = () => {
       time: '30 min drive',
       isWalk: false,
       tag: 'Buddhist Heritage',
-      url: '/loc_sarnath.png'
+      tagColor: 'bg-yellow-700',
+      emoji: '☸️',
+      url: '/loc_sarnath.png',
+      mapsQuery: 'Sarnath+Varanasi',
+      desc: 'Where Buddha gave his first sermon – a UNESCO site'
     },
     {
       title: 'Lal Bahadur Shastri International Airport',
@@ -57,93 +82,242 @@ const Explore = () => {
       time: '50–60 min drive',
       isWalk: false,
       tag: 'Airport / Transit',
-      url: '/loc_airport.png'
+      tagColor: 'bg-sky-700',
+      emoji: '✈️',
+      url: '/loc_airport.png',
+      mapsQuery: 'Lal+Bahadur+Shastri+International+Airport+Varanasi',
+      desc: 'International airport serving Varanasi city'
     }
   ];
+
+  const DIRECTIONS_URL = `https://www.google.com/maps/dir/?api=1&destination=Shivlok+Palace+Hotel,+D-34%2F181,+Ganesh+Mahal+Road,+Jangambadi,+Near+Godowlia+Chauraha,+Varanasi+221001`;
+  const MAPS_EMBED_URL = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14429.42!2d82.9539!3d25.3176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398e2dfa88f29083%3A0x5e9c73c7b8b57d4a!2sGodowlia%2C+Varanasi%2C+Uttar+Pradesh!5e0!3m2!1sen!2sin!4v1691000000000!5m2!1sen!2sin`;
 
   return (
     <div className="bg-[#FAF8F5] dark:bg-[#121417] pt-12 md:pt-16 pb-16 md:pb-20 border-b border-gray-200/40 dark:border-gray-800 transition-colors duration-300 select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Header */}
+        {/* ── Section Header ── */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-10 gap-4">
           <div>
             <div className="inline-block border-b-2 border-[#cda85c] pb-1 mb-2">
               <p className="text-[#cda85c] text-[11px] font-bold tracking-[0.2em] uppercase">
-                EXPLORE VARANASI & TRANSIT HUBS
+                EXPLORE VARANASI &amp; TRANSIT HUBS
               </p>
             </div>
             <h2 className="text-3xl sm:text-4xl font-serif text-gray-900 dark:text-white leading-tight transition-colors">
-              Nearby Attractions & Connectivity
+              Nearby Attractions &amp; Connectivity
             </h2>
             <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm font-light mt-2 max-w-2xl transition-colors">
-              Shivlok Palace offers unbeatable accessibility—just a short 10-minute heritage stroll to the revered Kashi Vishwanath Temple and Dashashwamedh Ghat!
+              Shivlok Palace offers unbeatable accessibility — just a short 8–10 minute walk to the revered Kashi Vishwanath Temple and Dashashwamedh Ghat.
             </p>
           </div>
           
-          <a href="#rooms" className="inline-flex items-center text-xs font-bold text-gray-900 dark:text-white hover:text-[#cda85c] dark:hover:text-[#cda85c] tracking-widest uppercase transition-colors group px-4 py-2 bg-white dark:bg-[#181a1f] rounded-xl border border-gray-200 dark:border-gray-800 shadow-sm">
-            <span>BOOK CENTRAL STAY</span>
-            <ArrowRight size={14} className="ml-2 group-hover:translate-x-1 transition-transform" />
+          {/* Get Directions CTA */}
+          <a
+            href={DIRECTIONS_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-xs font-bold text-white bg-[#4285F4] hover:bg-[#3367D6] tracking-wide uppercase transition-all px-5 py-2.5 rounded-xl shadow-md hover:scale-105 flex-shrink-0"
+          >
+            <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+            Get Directions to Hotel
           </a>
         </div>
 
-        {/* 7 Cards Responsive Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-          {places.map((place, index) => (
-            <div 
-              key={index} 
-              className="bg-white dark:bg-[#181a1f] rounded-2xl overflow-hidden shadow-sm border border-gray-200/80 dark:border-gray-800 group cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
-            >
-              <div>
-                {/* Image & Tag */}
-                <div className="relative h-44 overflow-hidden">
-                  <img 
-                    src={place.url} 
-                    alt={place.title} 
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute top-3 left-3 bg-gray-900/85 backdrop-blur-sm text-white text-[10px] font-bold px-3 py-1 rounded-full border border-white/20 tracking-wider uppercase">
-                    {place.tag}
-                  </div>
+        {/* ── Amenity Map + Cards Grid ── */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-10">
+
+          {/* Left: Large Google Maps Embed with amenity context */}
+          <div className="lg:col-span-5 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 shadow-xl flex flex-col">
+            {/* Map Header */}
+            <div className="bg-white dark:bg-[#181a1f] px-4 py-3 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <div className="w-7 h-7 rounded-full bg-[#4285F4] flex items-center justify-center">
+                  <MapPin size={14} className="text-white fill-white/30" />
                 </div>
-
-                {/* Text Info */}
-                <div className="p-5">
-                  <h3 className="font-serif font-bold text-gray-900 dark:text-white text-base mb-3 group-hover:text-[#cda85c] transition-colors line-clamp-2 leading-snug">
-                    {place.title}
-                  </h3>
-                  
-                  <div className="space-y-2 pt-2 border-t border-gray-100 dark:border-gray-800 transition-colors">
-                    <div className="flex items-center text-xs font-bold text-[#cda85c]">
-                      <MapPin size={14} className="mr-1.5 flex-shrink-0 fill-[#cda85c]/20 text-[#cda85c]" />
-                      <span className="text-gray-900 dark:text-gray-300 font-semibold mr-1 transition-colors">Distance:</span>
-                      <span className="text-gray-800 dark:text-white font-bold transition-colors">{place.dist}</span>
-                    </div>
-
-                    <div className="flex items-center text-xs text-gray-600 dark:text-gray-300 transition-colors">
-                      {place.isWalk ? (
-                        <Footprints size={14} className="mr-1.5 flex-shrink-0 text-emerald-600 dark:text-emerald-400" />
-                      ) : (
-                        <Navigation size={13} className="mr-1.5 flex-shrink-0 text-blue-600 dark:text-blue-400" />
-                      )}
-                      <span className="font-medium text-gray-700 dark:text-gray-200 transition-colors">{place.time}</span>
-                    </div>
-                  </div>
+                <div>
+                  <p className="text-xs font-bold text-gray-900 dark:text-white leading-none">Shivlok Palace Hotel</p>
+                  <p className="text-[10px] text-gray-500 dark:text-gray-400">Near Godowlia, Varanasi – 221001</p>
                 </div>
               </div>
-              
-              <div className="px-5 pb-4 pt-0">
-                <a 
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.title + ' Varanasi')}`}
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="w-full text-center block py-2 px-3 rounded-lg bg-gray-50 dark:bg-[#121417] hover:bg-gray-100 dark:hover:bg-black text-gray-700 dark:text-gray-200 hover:text-gray-900 dark:hover:text-white text-xs font-bold transition-colors border border-gray-200/60 dark:border-gray-800"
-                >
-                  View on Google Maps
-                </a>
-              </div>
+              <a
+                href="https://maps.google.com/?q=Shivlok+Palace+Hotel+Varanasi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[10px] font-bold text-[#4285F4] hover:underline flex items-center gap-1"
+              >
+                <ExternalLink size={11} /> Open in Maps
+              </a>
             </div>
-          ))}
+            
+            {/* Maps iframe */}
+            <div className="flex-1 min-h-[300px] sm:min-h-[360px]">
+              <iframe
+                title="Shivlok Palace Hotel – Nearby Amenities Map"
+                src={MAPS_EMBED_URL}
+                className="w-full h-full border-0 min-h-[300px] sm:min-h-[360px]"
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+
+            {/* Map Footer Buttons */}
+            <div className="bg-white dark:bg-[#181a1f] p-3 border-t border-gray-200 dark:border-gray-800 flex gap-2">
+              <a
+                href={DIRECTIONS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-1.5 py-2 bg-[#4285F4] hover:bg-[#3367D6] text-white rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all shadow-sm"
+              >
+                <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+                Get Directions
+              </a>
+              <a
+                href={`https://maps.google.com/maps?q=Shivlok+Palace+Hotel+Varanasi&layer=c`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-1.5 py-2 px-3 border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all"
+              >
+                Street View
+              </a>
+            </div>
+          </div>
+
+          {/* Right: Amenity list with distance chips */}
+          <div className="lg:col-span-7">
+            <p className="text-[10px] font-bold text-gray-500 dark:text-gray-400 tracking-[0.2em] uppercase mb-3">
+              📍 Nearby Amenities &amp; Distances
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {places.map((place, index) => (
+                <a
+                  key={index}
+                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.title + ' Varanasi')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 p-3 bg-white dark:bg-[#181a1f] rounded-xl border border-gray-200/80 dark:border-gray-800 hover:border-[#cda85c] hover:shadow-md transition-all duration-300 group"
+                >
+                  {/* Emoji badge */}
+                  <div className="w-10 h-10 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-lg flex-shrink-0 group-hover:scale-110 transition-transform">
+                    {place.emoji}
+                  </div>
+                  
+                  <div className="flex-1 min-w-0">
+                    <p className="text-xs font-bold text-gray-900 dark:text-white group-hover:text-[#cda85c] transition-colors line-clamp-1">
+                      {place.title}
+                    </p>
+                    <p className="text-[10px] text-gray-500 dark:text-gray-400 line-clamp-1 mt-0.5">{place.desc}</p>
+                  </div>
+
+                  <div className="flex flex-col items-end gap-1 flex-shrink-0">
+                    <span className="text-[10px] font-extrabold text-gray-900 dark:text-white">{place.dist}</span>
+                    <span className={`text-[9px] font-bold text-white px-1.5 py-0.5 rounded-full flex items-center gap-0.5 ${place.isWalk ? 'bg-emerald-600' : 'bg-blue-600'}`}>
+                      {place.isWalk ? (
+                        <><Footprints size={8} /> Walk</>
+                      ) : (
+                        <><Navigation size={8} /> Drive</>
+                      )}
+                    </span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* ── 7 Photo Cards Responsive Grid (below) ── */}
+        <div>
+          <p className="text-[10px] font-bold text-gray-500 dark:text-gray-400 tracking-[0.2em] uppercase mb-4">
+            🗺️ Explore Varanasi – Photo Gallery
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+            {places.map((place, index) => (
+              <div 
+                key={index} 
+                className="bg-white dark:bg-[#181a1f] rounded-2xl overflow-hidden shadow-sm border border-gray-200/80 dark:border-gray-800 group cursor-pointer hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  {/* Image & Tag */}
+                  <div className="relative h-44 overflow-hidden">
+                    <img 
+                      src={place.url} 
+                      alt={place.title} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <div className={`absolute top-3 left-3 ${place.tagColor} backdrop-blur-sm text-white text-[9px] font-bold px-2.5 py-1 rounded-full tracking-wider uppercase`}>
+                      {place.tag}
+                    </div>
+                    {/* Distance pill overlay */}
+                    <div className="absolute bottom-3 right-3 bg-black/70 backdrop-blur-md text-white text-[10px] font-extrabold px-2.5 py-1 rounded-full border border-white/20">
+                      {place.dist}
+                    </div>
+                  </div>
+
+                  {/* Text Info */}
+                  <div className="p-4">
+                    <h3 className="font-serif font-bold text-gray-900 dark:text-white text-sm mb-1 group-hover:text-[#cda85c] transition-colors line-clamp-2 leading-snug">
+                      {place.emoji} {place.title}
+                    </h3>
+                    <p className="text-[11px] text-gray-500 dark:text-gray-400 line-clamp-2 leading-relaxed">{place.desc}</p>
+                    
+                    <div className="flex items-center gap-3 mt-2.5 pt-2.5 border-t border-gray-100 dark:border-gray-800">
+                      <div className="flex items-center text-xs text-gray-600 dark:text-gray-300">
+                        {place.isWalk ? (
+                          <Footprints size={12} className="mr-1 text-emerald-600 dark:text-emerald-400" />
+                        ) : (
+                          <Navigation size={12} className="mr-1 text-blue-600 dark:text-blue-400" />
+                        )}
+                        <span className="font-medium text-[11px]">{place.time}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="px-4 pb-4 pt-0">
+                  <a 
+                    href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(place.title + ' Varanasi')}&origin=Shivlok+Palace+Hotel+Varanasi`}
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-full text-center flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl bg-[#4285F4]/10 hover:bg-[#4285F4] text-[#4285F4] hover:text-white text-[11px] font-bold transition-all border border-[#4285F4]/30 hover:border-[#4285F4]"
+                  >
+                    <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+                    Directions from Hotel
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── Bottom Get Directions Banner ── */}
+        <div className="mt-10 rounded-2xl bg-gradient-to-r from-[#4285F4] via-[#3367D6] to-[#0d47a1] p-5 sm:p-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+          <div>
+            <p className="text-white/80 text-[10px] font-bold tracking-[0.2em] uppercase mb-1">🗺️ Google Maps</p>
+            <h3 className="text-white text-lg sm:text-xl font-serif font-bold">Find Your Way to Shivlok Palace</h3>
+            <p className="text-white/70 text-xs mt-1">D-34/181, Ganesh Mahal Road, Near Godowlia Chauraha, Varanasi – 221001</p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+            <a
+              href={DIRECTIONS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 bg-white text-[#4285F4] hover:bg-gray-100 font-bold text-xs px-6 py-3 rounded-xl uppercase tracking-wider transition-all shadow-md hover:scale-105"
+            >
+              <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+              Get Directions
+            </a>
+            <a
+              href="https://maps.google.com/?q=Shivlok+Palace+Hotel+Varanasi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 border-2 border-white/50 text-white hover:bg-white/10 font-bold text-xs px-6 py-3 rounded-xl uppercase tracking-wider transition-all"
+            >
+              <ExternalLink size={13} />
+              View on Google Maps
+            </a>
+          </div>
         </div>
 
       </div>

@@ -4,9 +4,9 @@ import { Calendar, Users, X, MessageCircle, Mail, ShieldAlert, CheckCircle2, Spa
 const API_BASE = 'http://localhost:5000/api';
 
 const ROOM_PRICES = {
-  'Deluxe Room': 3200,
-  'Premium Room': 4500,
-  'Family Suite': 7500,
+  'Deluxe Room': 2500,
+  'Premium Room': 3500,
+  'Family Suite': 4500,
 };
 
 const BookingWidget = () => {
@@ -171,23 +171,31 @@ const BookingWidget = () => {
               onChange={(e) => setRoomType(e.target.value)}
               className="w-full bg-transparent text-xs sm:text-sm font-semibold text-gray-800 dark:text-gray-100 focus:outline-none cursor-pointer py-0.5 truncate"
             >
-              <option value="Deluxe Room" className="bg-white dark:bg-[#181a1f] text-gray-900 dark:text-white">Deluxe Room (₹3,200 + Taxes) - 2 Adults</option>
-              <option value="Premium Room" className="bg-white dark:bg-[#181a1f] text-gray-900 dark:text-white">Premium Room (₹4,500 + Taxes) - 2 Adults</option>
-              <option value="Family Suite" className="bg-white dark:bg-[#181a1f] text-gray-900 dark:text-white">Family Suite (₹7,500 + Taxes) - 4 Adults</option>
+              <option value="Deluxe Room" className="bg-white dark:bg-[#181a1f] text-gray-900 dark:text-white">Deluxe Room (₹2,500 + Taxes) - 2 Adults</option>
+              <option value="Premium Room" className="bg-white dark:bg-[#181a1f] text-gray-900 dark:text-white">Premium Room (₹3,500 + Taxes) - 2 Adults</option>
+              <option value="Family Suite" className="bg-white dark:bg-[#181a1f] text-gray-900 dark:text-white">Family Suite (₹4,500 + Taxes) - 4 Adults</option>
             </select>
           </div>
 
         </div>
 
-        {/* Submit Button */}
-        <div className="w-full lg:w-auto">
+        {/* Submit Button & WhatsApp Quick Note */}
+        <div className="w-full lg:w-auto flex flex-col items-center gap-2">
           <button 
             type="submit"
             className="w-full lg:w-auto bg-[#121417] dark:bg-[#cda85c] hover:bg-black dark:hover:bg-[#b89448] text-[#cda85c] dark:text-gray-950 font-bold text-xs tracking-wider px-8 py-5 rounded-xl transition-all duration-300 shadow-xl uppercase whitespace-nowrap border border-[#cda85c]/40 flex items-center justify-center gap-2 cursor-pointer hover:scale-105"
           >
             <Sparkles size={15} className="text-[#cda85c] dark:text-gray-950 fill-current" />
-            <span>CHECK AVAILABILITY & BOOK</span>
+            <span>BOOK YOUR STAY</span>
           </button>
+          <a
+            href="https://wa.me/918470905123?text=Hello%20Shivlok%20Palace%20Team%2C%20I%20would%20like%20to%20book%20a%20room.%20Please%20share%20availability%20and%20tariffs."
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[10px] text-emerald-600 dark:text-emerald-400 font-bold hover:underline flex items-center gap-1"
+          >
+            <MessageCircle size={11} className="fill-current" /> WhatsApp for Instant Booking
+          </a>
         </div>
 
       </form>
@@ -392,7 +400,7 @@ const BookingWidget = () => {
                       WhatsApp
                     </a>
                     <a
-                      href={`mailto:shivlokpalace@gmail.com?subject=${encodeURIComponent(`Reservation Inquiry - ${roomType}`)}&body=${encodeURIComponent(`Hello Shivlok Palace,\n\nI would like to book the ${roomType} from ${checkIn} to ${checkOut}.\n\nPlease let me know the confirmation details.\n\nThank you.`)}`}
+                      href={`mailto:shivlokpalace.vns@gmail.com?subject=${encodeURIComponent(`Reservation Inquiry - ${roomType}`)}&body=${encodeURIComponent(`Hello Shivlok Palace,\n\nI would like to book the ${roomType} from ${checkIn} to ${checkOut}.\n\nPlease let me know the confirmation details.\n\nThank you.`)}`}
                       className="bg-[#181a1f] hover:bg-[#202329] text-gray-200 border border-gray-700 font-bold py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors text-xs uppercase tracking-wider"
                     >
                       <Mail size={14} className="text-[#cda85c]" />

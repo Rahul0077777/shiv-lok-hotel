@@ -175,21 +175,21 @@ const Restaurant = () => {
           {/* Left Text Block (4 cols) */}
           <div className="lg:col-span-4 pr-0 lg:pr-4">
             <p className="text-[#cda85c] text-[11px] font-bold tracking-[0.2em] uppercase mb-3">
-              PURE VEG RESTAURANT
+              PURE VEG RESTAURANT · COMING SOON
             </p>
             
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif text-gray-900 dark:text-white leading-tight mb-4 transition-colors">
-              Great Food,<br />
-              Great Experience
+              Our Restaurant<br />
+              <span className="text-[#cda85c] italic">Opening Soon</span>
             </h2>
             
             <p className="text-gray-700 dark:text-gray-300 text-xs sm:text-sm leading-relaxed mb-6 font-light transition-colors">
-              Savor a wide range of delicious Indian, Continental & local delicacies with breathtaking Ganga views.
+              Our in-house pure vegetarian restaurant is coming soon. Look forward to a delightful dining experience with authentic Indian flavours, local Banarasi specialties, and warm hospitality — right at Shivlok Palace.
             </p>
 
             {/* Checkmarks Grid */}
             <div className="grid grid-cols-2 gap-3 mb-8">
-              {['Pure Veg Restaurant', 'Breakfast Buffet', 'Multi-cuisine Menu', 'Rooftop Dining'].map((item) => (
+              {['100% Pure Veg', 'Banarasi Specialties', 'Multi-cuisine Menu', 'Rooftop Dining'].map((item) => (
                 <div key={item} className="flex items-center space-x-2 text-xs text-gray-800 dark:text-gray-200 font-semibold dark:font-medium">
                   <Check size={16} className="text-[#cda85c] flex-shrink-0" />
                   <span>{item}</span>
@@ -197,50 +197,74 @@ const Restaurant = () => {
               ))}
             </div>
 
+            {/* Coming Soon Notice */}
+            <div className="mb-5 p-3.5 bg-amber-50 dark:bg-amber-900/20 border border-amber-300 dark:border-amber-700/50 rounded-xl flex items-start gap-2.5">
+              <span className="text-amber-600 dark:text-amber-400 text-lg leading-none">🍽️</span>
+              <div>
+                <p className="text-xs font-bold text-amber-800 dark:text-amber-300 uppercase tracking-wide mb-0.5">Opening Soon</p>
+                <p className="text-xs text-amber-700 dark:text-amber-400 leading-relaxed">Our restaurant is not yet operational. Register your interest via WhatsApp and we'll notify you on launch!</p>
+              </div>
+            </div>
+
             {/* Buttons */}
             <div className="flex flex-wrap items-center gap-3">
               <button
                 onClick={() => { setShowMenuModal(true); setActiveMenuTab(0); }}
                 className="bg-[#cda85c] hover:bg-[#b89448] text-gray-950 font-bold text-xs px-6 py-3 rounded-xl transition-all duration-300 tracking-wider uppercase shadow-lg cursor-pointer">
-                VIEW MENU
+                PREVIEW MENU
               </button>
-              <button
-                onClick={() => setShowReserveModal(true)}
-                className="border border-gray-400 dark:border-[#cda85c]/80 hover:bg-gray-200 dark:hover:bg-[#cda85c]/10 text-gray-900 dark:text-white font-bold text-xs px-6 py-3 rounded-xl transition-all duration-300 tracking-wider uppercase cursor-pointer"
+              <a
+                href="https://wa.me/918470905123?text=Hello%20Shivlok%20Palace%20Team%2C%20I%20am%20interested%20in%20dining%20at%20your%20restaurant.%20Please%20notify%20me%20when%20it%20opens!"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs px-6 py-3 rounded-xl transition-all duration-300 tracking-wider uppercase shadow-lg"
               >
-                RESERVE A TABLE
-              </button>
+                <svg className="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                NOTIFY ME ON WHATSAPP
+              </a>
             </div>
           </div>
 
-          {/* Center Main Image (5 cols) */}
+          {/* Center Main Image (5 cols) — Coming Soon Overlay */}
           <div className="lg:col-span-5 h-[360px] sm:h-[400px] lg:h-[430px] rounded-2xl overflow-hidden shadow-xl border border-gray-300 dark:border-gray-800 relative group">
             <img 
               src="/rest_main.png" 
-              alt="Main Rooftop Restaurant View" 
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              alt="Shivlok Palace Restaurant Coming Soon" 
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-75"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
+            {/* Coming Soon Badge */}
+            <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+              <div className="bg-black/60 backdrop-blur-sm border border-[#cda85c]/60 rounded-2xl px-6 py-4 shadow-2xl">
+                <p className="text-[#cda85c] text-[10px] font-bold tracking-[0.3em] uppercase mb-1">🍽️ Restaurant</p>
+                <p className="text-white text-2xl font-serif font-bold">Coming Soon</p>
+                <p className="text-gray-300 text-xs mt-1">Pure Veg · Banarasi Specialties</p>
+              </div>
+            </div>
           </div>
 
           {/* Right 3 Thumbnails Stack (3 cols) */}
           <div className="lg:col-span-3 flex flex-col gap-3 h-[360px] sm:h-[400px] lg:h-[430px]">
             
             <div className="flex-1 rounded-2xl overflow-hidden border border-gray-300 dark:border-gray-800 shadow-md relative group">
-              <img src="/rest_thumb1.png" alt="Restaurant Ambiance" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <img src="/rest_thumb1.png" alt="Restaurant Ambiance Preview" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-75" />
+              <div className="absolute inset-0 bg-black/30 flex items-end p-3">
+                <span className="text-[9px] font-bold text-[#cda85c] bg-black/60 backdrop-blur-sm px-2 py-1 rounded-full uppercase tracking-widest border border-[#cda85c]/40">Coming Soon</span>
+              </div>
             </div>
 
-            <div onClick={() => setIsVideoOpen(true)} className="flex-1 rounded-2xl overflow-hidden border border-gray-300 dark:border-gray-800 shadow-md relative group cursor-pointer">
-              <img src="/rest_thumb2.png" alt="Restaurant Dining Video" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-90" />
-              <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/20 transition-colors">
-                <div className="w-12 h-12 rounded-full bg-white/30 backdrop-blur-md border border-white/80 flex items-center justify-center group-hover:scale-110 transition-transform shadow-2xl">
-                  <Play size={20} className="text-white fill-white ml-0.5" />
-                </div>
+            <div className="flex-1 rounded-2xl overflow-hidden border border-gray-300 dark:border-gray-800 shadow-md relative group cursor-pointer">
+              <img src="/rest_thumb2.png" alt="Restaurant Dining Preview" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-75" />
+              <div className="absolute inset-0 bg-black/30 flex items-end p-3">
+                <span className="text-[9px] font-bold text-[#cda85c] bg-black/60 backdrop-blur-sm px-2 py-1 rounded-full uppercase tracking-widest border border-[#cda85c]/40">Coming Soon</span>
               </div>
             </div>
 
             <div className="flex-1 rounded-2xl overflow-hidden border border-gray-300 dark:border-gray-800 shadow-md relative group">
-              <img src="/rest_thumb3.png" alt="Restaurant Food Spread" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              <img src="/rest_thumb3.png" alt="Restaurant Food Preview" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-75" />
+              <div className="absolute inset-0 bg-black/30 flex items-end p-3">
+                <span className="text-[9px] font-bold text-[#cda85c] bg-black/60 backdrop-blur-sm px-2 py-1 rounded-full uppercase tracking-widest border border-[#cda85c]/40">Coming Soon</span>
+              </div>
             </div>
 
           </div>
@@ -260,9 +284,9 @@ const Restaurant = () => {
                   <UtensilsCrossed size={16} className="text-[#cda85c]" />
                 </div>
                 <div>
-                  <h3 className="text-lg font-serif font-bold text-white leading-none">Our Menu</h3>
-                  <p className="text-[11px] text-gray-400 mt-0.5 flex items-center gap-1">
-                    <Leaf size={10} className="text-green-500" /> 100% Pure Vegetarian · Shivlok Palace Restaurant
+                  <h3 className="text-lg font-serif font-bold text-white leading-none">Menu Preview</h3>
+                  <p className="text-[11px] text-amber-400 mt-0.5 flex items-center gap-1">
+                    <Leaf size={10} className="text-green-500" /> 100% Pure Vegetarian · Restaurant Opening Soon
                   </p>
                 </div>
               </div>
