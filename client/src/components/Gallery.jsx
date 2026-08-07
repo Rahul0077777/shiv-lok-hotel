@@ -10,8 +10,8 @@ const Gallery = () => {
     { title: 'Lobby', url: '/gal_lobby.png' },
     { title: 'Restaurant', url: '/rest_thumb1.png' },
     { title: 'Rooftop', url: '/rest_main.png' },
-    { title: 'Exterior', url: '/hero1.png' },
-    { title: 'Nearby Places', url: '/hero2.png' },
+    { title: 'Hotel Exterior', url: '/hero1.png' },
+    { title: 'Hotel Rooms', url: '/hero2.png' },
   ];
 
   const openLightbox = (index) => {

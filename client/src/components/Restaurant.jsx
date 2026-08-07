@@ -363,16 +363,20 @@ const Restaurant = () => {
 
             {/* Footer */}
             <div className="flex items-center justify-between px-6 py-3 border-t border-gray-800 flex-shrink-0">
-              <p className="text-[10px] text-gray-500">
-                <Leaf size={10} className="inline text-green-500 mr-1" />
-                All prices in ₹ · Taxes extra · Pure veg kitchen
+              <p className="text-[10px] text-amber-400 font-semibold flex items-center gap-1">
+                <Leaf size={10} className="inline text-green-500" />
+                Menu Preview · Restaurant Opening Soon
               </p>
-              <button
-                onClick={() => { setShowMenuModal(false); setShowReserveModal(true); }}
-                className="bg-[#cda85c] hover:bg-[#b89448] text-gray-950 font-bold text-[11px] px-4 py-2 rounded-xl uppercase tracking-wider transition-all"
+              <a
+                href="https://wa.me/918470905123?text=Hello%20Shivlok%20Palace%20Team%2C%20I%20am%20interested%20in%20dining%20at%20your%20restaurant.%20Please%20notify%20me%20when%20it%20opens!"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setShowMenuModal(false)}
+                className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-[11px] px-4 py-2 rounded-xl uppercase tracking-wider transition-all flex items-center gap-1.5"
               >
-                Reserve a Table
-              </button>
+                <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                Notify Me on WhatsApp
+              </a>
             </div>
 
           </div>
