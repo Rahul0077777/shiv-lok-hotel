@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin, Footprints, Navigation, ExternalLink } from 'lucide-react';
+import { Footprints, Navigation, ExternalLink } from 'lucide-react';
 
 const Explore = () => {
 
@@ -91,7 +91,6 @@ const Explore = () => {
   ];
 
   const DIRECTIONS_URL = `https://www.google.com/maps/dir/?api=1&destination=Shivlok+Palace+Hotel,+D-34%2F181,+Ganesh+Mahal+Road,+Jangambadi,+Near+Godowlia+Chauraha,+Varanasi+221001`;
-  const MAPS_EMBED_URL = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14429.42!2d82.9539!3d25.3176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x398e2dfa88f29083%3A0x5e9c73c7b8b57d4a!2sGodowlia%2C+Varanasi%2C+Uttar+Pradesh!5e0!3m2!1sen!2sin!4v1691000000000!5m2!1sen!2sin`;
 
   return (
     <div className="bg-[#FAF8F5] dark:bg-[#121417] pt-12 md:pt-16 pb-16 md:pb-20 border-b border-gray-200/40 dark:border-gray-800 transition-colors duration-300 select-none">
@@ -125,107 +124,7 @@ const Explore = () => {
           </a>
         </div>
 
-        {/* ── Amenity Map + Cards Grid ── */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 mb-10">
 
-          {/* Left: Large Google Maps Embed with amenity context */}
-          <div className="lg:col-span-5 rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800 shadow-xl flex flex-col">
-            {/* Map Header */}
-            <div className="bg-white dark:bg-[#181a1f] px-4 py-3 border-b border-gray-200 dark:border-gray-800 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-full bg-[#4285F4] flex items-center justify-center">
-                  <MapPin size={14} className="text-white fill-white/30" />
-                </div>
-                <div>
-                  <p className="text-xs font-bold text-gray-900 dark:text-white leading-none">Shivlok Palace Hotel</p>
-                  <p className="text-[10px] text-gray-500 dark:text-gray-400">Near Godowlia, Varanasi – 221001</p>
-                </div>
-              </div>
-              <a
-                href="https://maps.google.com/?q=Shivlok+Palace+Hotel+Varanasi"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[10px] font-bold text-[#4285F4] hover:underline flex items-center gap-1"
-              >
-                <ExternalLink size={11} /> Open in Maps
-              </a>
-            </div>
-            
-            {/* Maps iframe */}
-            <div className="flex-1 min-h-[300px] sm:min-h-[360px]">
-              <iframe
-                title="Shivlok Palace Hotel – Nearby Amenities Map"
-                src={MAPS_EMBED_URL}
-                className="w-full h-full border-0 min-h-[300px] sm:min-h-[360px]"
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
-            </div>
-
-            {/* Map Footer Buttons */}
-            <div className="bg-white dark:bg-[#181a1f] p-3 border-t border-gray-200 dark:border-gray-800 flex gap-2">
-              <a
-                href={DIRECTIONS_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-1.5 py-2 bg-[#4285F4] hover:bg-[#3367D6] text-white rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all shadow-sm"
-              >
-                <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
-                Get Directions
-              </a>
-              <a
-                href={`https://maps.google.com/maps?q=Shivlok+Palace+Hotel+Varanasi&layer=c`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-1.5 py-2 px-3 border border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-xl text-[11px] font-bold uppercase tracking-wider transition-all"
-              >
-                Street View
-              </a>
-            </div>
-          </div>
-
-          {/* Right: Amenity list with distance chips */}
-          <div className="lg:col-span-7">
-            <p className="text-[10px] font-bold text-gray-500 dark:text-gray-400 tracking-[0.2em] uppercase mb-3">
-              📍 Nearby Amenities &amp; Distances
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {places.map((place, index) => (
-                <a
-                  key={index}
-                  href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(place.title + ' Varanasi')}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 p-3 bg-white dark:bg-[#181a1f] rounded-xl border border-gray-200/80 dark:border-gray-800 hover:border-[#cda85c] hover:shadow-md transition-all duration-300 group"
-                >
-                  {/* Emoji badge */}
-                  <div className="w-10 h-10 rounded-xl bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-lg flex-shrink-0 group-hover:scale-110 transition-transform">
-                    {place.emoji}
-                  </div>
-                  
-                  <div className="flex-1 min-w-0">
-                    <p className="text-xs font-bold text-gray-900 dark:text-white group-hover:text-[#cda85c] transition-colors line-clamp-1">
-                      {place.title}
-                    </p>
-                    <p className="text-[10px] text-gray-500 dark:text-gray-400 line-clamp-1 mt-0.5">{place.desc}</p>
-                  </div>
-
-                  <div className="flex flex-col items-end gap-1 flex-shrink-0">
-                    <span className="text-[10px] font-extrabold text-gray-900 dark:text-white">{place.dist}</span>
-                    <span className={`text-[9px] font-bold text-white px-1.5 py-0.5 rounded-full flex items-center gap-0.5 ${place.isWalk ? 'bg-emerald-600' : 'bg-blue-600'}`}>
-                      {place.isWalk ? (
-                        <><Footprints size={8} /> Walk</>
-                      ) : (
-                        <><Navigation size={8} /> Drive</>
-                      )}
-                    </span>
-                  </div>
-                </a>
-              ))}
-            </div>
-          </div>
-        </div>
 
         {/* ── 7 Photo Cards Responsive Grid (below) ── */}
         <div>
