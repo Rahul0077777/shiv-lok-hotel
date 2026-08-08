@@ -33,7 +33,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
           </div>
           <div className="hidden md:flex items-center space-x-1.5 font-medium">
             <Mail size={13} className="text-[#cda85c]" />
-            <a href="mailto:shivlokpalace@gmail.com" className="hover:text-[#cda85c] transition-colors">shivlokpalace@gmail.com</a>
+            <a href="mailto:shivlokpalace.vns@gmail.com" className="hover:text-[#cda85c] transition-colors">shivlokpalace.vns@gmail.com</a>
           </div>
         </div>
 
@@ -44,9 +44,9 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
             <span className="hover:text-[#cda85c] cursor-pointer transition-colors">हिंदी</span>
           </div>
           <div className="flex items-center space-x-2.5 text-gray-600 dark:text-gray-400">
-            <a href="#" aria-label="Facebook"><FaFacebook size={13} className="hover:text-[#cda85c] transition-colors" /></a>
-            <a href="#" aria-label="Instagram"><FaInstagram size={13} className="hover:text-[#cda85c] transition-colors" /></a>
-            <a href="#" aria-label="Twitter"><FaTwitter size={13} className="hover:text-[#cda85c] transition-colors" /></a>
+            <a href="https://www.facebook.com/shivlokpalacebsb" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><FaFacebook size={13} className="hover:text-[#cda85c] transition-colors" /></a>
+            <a href="https://www.instagram.com/shivlokpalacebsb" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram size={13} className="hover:text-[#cda85c] transition-colors" /></a>
+            <a href="https://x.com/shivlokpalace" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X"><FaTwitter size={13} className="hover:text-[#cda85c] transition-colors" /></a>
           </div>
         </div>
       </div>
@@ -106,10 +106,12 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
           </button>
 
           <a 
-            href="#booking" 
+            href="https://wa.me/918470905123?text=Hello%20Shivlok%20Palace%20Team%2C%20I%20would%20like%20to%20book%20a%20room.%20Please%20share%20availability%20and%20tariffs."
+            target="_blank"
+            rel="noopener noreferrer"
             className="hidden sm:inline-block bg-[#cda85c] hover:bg-[#b89448] text-gray-950 font-bold text-xs px-5 py-2.5 rounded-xl transition-all duration-300 tracking-wider uppercase shadow-md hover:scale-105"
           >
-            BOOK NOW
+            BOOK YOUR STAY
           </a>
           
           <button 
@@ -137,11 +139,13 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
             </a>
           ))}
           <a
-            href="#booking"
+            href="https://wa.me/918470905123?text=Hello%20Shivlok%20Palace%20Team%2C%20I%20would%20like%20to%20book%20a%20room.%20Please%20share%20availability%20and%20tariffs."
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setMobileMenuOpen(false)}
             className="block text-center bg-[#cda85c] text-gray-950 font-bold text-xs py-3 rounded-xl uppercase tracking-wider mt-4 shadow"
           >
-            BOOK NOW
+            BOOK YOUR STAY
           </a>
         </div>
       )}

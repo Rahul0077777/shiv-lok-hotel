@@ -12,7 +12,7 @@ const Amenities = () => {
 
   const hotelFacilities = [
     { name: 'Free Wi-Fi', status: 'Included', category: 'Connectivity', icon: <Wifi className="w-6 h-6" />, desc: 'High-speed Fiber Internet across all rooms & public areas' },
-    { name: 'Pure Veg Restaurant', status: 'Included', category: 'Dining', icon: <Utensils className="w-6 h-6" />, desc: 'Delicious multi-cuisine dining with authentic Banarasi flavors' },
+    { name: 'Pure Veg Restaurant', status: 'Coming Soon', category: 'Dining', icon: <Utensils className="w-6 h-6" />, desc: 'Our in-house pure vegetarian restaurant is opening soon. Stay tuned for authentic Banarasi flavors!' },
     { name: 'Modern Lift / Elevator', status: 'Included', category: 'Accessibility', icon: <ArrowUpSquare className="w-6 h-6" />, desc: 'Smooth elevator connectivity to all guest room floors' },
     { name: 'Air Conditioning (AC)', status: 'Included', category: 'Comfort', icon: <Wind className="w-6 h-6" />, desc: 'Climate-controlled cooling throughout the entire property' },
     { name: '24x7 Power Backup', status: 'Included', category: 'Essential', icon: <Zap className="w-6 h-6" />, desc: 'Uninterrupted electricity backup with silent generators' },
@@ -91,6 +91,12 @@ const Amenities = () => {
         return (
           <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wide uppercase bg-purple-500/10 text-purple-800 dark:text-purple-300 border border-purple-500/30 whitespace-nowrap">
             <ShieldAlert className="w-3 h-3 text-purple-600 flex-shrink-0" /> Chargeable
+          </span>
+        );
+      case 'Coming Soon':
+        return (
+          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wide uppercase bg-amber-500/10 text-amber-800 dark:text-amber-300 border border-amber-500/30 whitespace-nowrap">
+            🍽️ Coming Soon
           </span>
         );
       case 'Not Available':

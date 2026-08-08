@@ -110,7 +110,7 @@ const Footer = () => {
 
                 <div className="flex items-center space-x-3">
                   <Mail size={15} className="text-[#cda85c] flex-shrink-0" />
-                  <a href="mailto:shivlokpalace@gmail.com" className="text-gray-800 dark:text-gray-200 font-bold dark:font-medium hover:text-[#cda85c] transition-colors">shivlokpalace@gmail.com</a>
+                  <a href="mailto:shivlokpalace.vns@gmail.com" className="text-gray-800 dark:text-gray-200 font-bold dark:font-medium hover:text-[#cda85c] transition-colors">shivlokpalace.vns@gmail.com</a>
                 </div>
 
                 <div className="flex items-center space-x-3">
@@ -136,13 +136,13 @@ const Footer = () => {
 
             {/* Social Icons Row */}
             <div className="flex items-center space-x-2.5 mt-4">
-              <a href="#" aria-label="Facebook" className="w-8 h-8 rounded-full border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-white hover:border-[#cda85c] hover:bg-[#cda85c] hover:text-gray-950 flex items-center justify-center transition-all">
+              <a href="https://www.facebook.com/shivlokpalacebsb" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="w-8 h-8 rounded-full border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-white hover:border-[#cda85c] hover:bg-[#cda85c] hover:text-gray-950 flex items-center justify-center transition-all">
                 <FaFacebookF size={12} />
               </a>
-              <a href="#" aria-label="Instagram" className="w-8 h-8 rounded-full border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-white hover:border-[#cda85c] hover:bg-[#cda85c] hover:text-gray-950 flex items-center justify-center transition-all">
+              <a href="https://www.instagram.com/shivlokpalacebsb" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="w-8 h-8 rounded-full border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-white hover:border-[#cda85c] hover:bg-[#cda85c] hover:text-gray-950 flex items-center justify-center transition-all">
                 <FaInstagram size={12} />
               </a>
-              <a href="#" aria-label="Twitter" className="w-8 h-8 rounded-full border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-white hover:border-[#cda85c] hover:bg-[#cda85c] hover:text-gray-950 flex items-center justify-center transition-all">
+              <a href="https://x.com/shivlokpalace" target="_blank" rel="noopener noreferrer" aria-label="Twitter / X" className="w-8 h-8 rounded-full border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-white hover:border-[#cda85c] hover:bg-[#cda85c] hover:text-gray-950 flex items-center justify-center transition-all">
                 <FaTwitter size={12} />
               </a>
               <a href="#" aria-label="Youtube" className="w-8 h-8 rounded-full border border-gray-400 dark:border-gray-700 text-gray-800 dark:text-white hover:border-[#cda85c] hover:bg-[#cda85c] hover:text-gray-950 flex items-center justify-center transition-all">
@@ -152,15 +152,43 @@ const Footer = () => {
           </div>
 
           {/* Column 2: Google Maps Embed Card */}
-          <div className="lg:col-span-4 rounded-xl overflow-hidden shadow-xl border border-gray-300 dark:border-gray-800 relative bg-[#e5e3df] h-[210px] sm:h-[220px] transition-colors">
-            <iframe 
-              title="Shivlok Palace Map Location"
-              src="https://www.google.com/maps?q=D-34/181,+Ganesh+Mahal+Road,+Jangambadi,+Near+Godowlia+Chauraha,+Varanasi+221001&output=embed" 
-              className="w-full h-full border-0"
-              allowFullScreen="" 
-              loading="lazy" 
-              referrerPolicy="no-referrer-when-downgrade"
-            ></iframe>
+          <div className="lg:col-span-4 rounded-xl overflow-hidden shadow-xl border border-gray-300 dark:border-gray-800 relative bg-[#e5e3df] transition-colors flex flex-col">
+            {/* Map iframe */}
+            <div className="relative flex-1 h-[160px] sm:h-[170px]">
+              <iframe 
+                title="Shivlok Palace Map Location"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.3!2d82.9739!3d25.3173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zShivlok+Palace+Hotel+Varanasi!5e0!3m2!1sen!2sin!4v1" 
+                className="w-full h-full border-0"
+                allowFullScreen="" 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+              {/* Map overlay pin badge */}
+              <div className="absolute top-2 left-2 bg-white dark:bg-[#121417] border border-[#cda85c]/60 rounded-lg px-2 py-1 shadow-md flex items-center gap-1.5 pointer-events-none">
+                <MapPin size={11} className="text-[#cda85c] flex-shrink-0" />
+                <span className="text-[10px] font-bold text-gray-800 dark:text-white">Shivlok Palace</span>
+              </div>
+            </div>
+            {/* Get Directions Button */}
+            <div className="flex items-center gap-2 p-2 bg-white dark:bg-[#181a1f] border-t border-gray-200 dark:border-gray-800">
+              <a 
+                href="https://www.google.com/maps/dir/?api=1&destination=Shivlok+Palace+Hotel,+D-34%2F181,+Ganesh+Mahal+Road,+Jangambadi,+Near+Godowlia+Chauraha,+Varanasi+221001"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex-1 flex items-center justify-center gap-1.5 py-1.5 bg-[#4285F4] hover:bg-[#3367D6] text-white rounded-lg text-[11px] font-bold uppercase tracking-wider transition-all shadow-sm"
+              >
+                <svg className="w-3 h-3 fill-current" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+                Get Directions
+              </a>
+              <a 
+                href="https://maps.google.com/?q=Shivlok+Palace+Hotel+Varanasi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1 py-1.5 px-2.5 border border-gray-300 dark:border-gray-700 rounded-lg text-[11px] font-bold text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all"
+              >
+                View Map
+              </a>
+            </div>
           </div>
 
           {/* Column 3: Send Us An Inquiry Form Card */}
