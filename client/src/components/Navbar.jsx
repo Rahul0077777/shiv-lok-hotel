@@ -10,7 +10,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
     { name: 'ROOMS', href: '#rooms' },
     { name: 'RESTAURANT', href: '#restaurant' },
     { name: 'FACILITIES', href: '#amenities' },
-    { name: 'GALLERY', href: '#gallery' },
+    { name: 'OFFERS', href: '#offers' },
     { name: 'CONTACT', href: '#contact' },
   ];
 
@@ -61,7 +61,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
         </a>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center space-x-2.5 lg:space-x-4 xl:space-x-6 text-[10px] lg:text-[10px] xl:text-xs font-bold tracking-wider">
+        <nav className="hidden lg:flex items-center space-x-3 lg:space-x-6 xl:space-x-10 2xl:space-x-14 text-[10px] lg:text-xs xl:text-sm font-bold tracking-wider">
           {navLinks.map((link, index) => (
             <a 
               key={index}
@@ -81,18 +81,12 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
           <button
             onClick={toggleDarkMode}
             aria-label="Toggle Dark Mode"
-            className="p-1.5 sm:px-2.5 xl:px-3 sm:py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800/80 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-amber-400 font-bold text-[9px] lg:text-[10px] xl:text-xs flex items-center gap-1.5 transition-all duration-300 cursor-pointer shadow-sm"
+            className="p-2 sm:p-2.5 xl:p-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800/80 hover:bg-gray-200 dark:hover:bg-gray-700 flex items-center justify-center transition-all duration-300 cursor-pointer shadow-sm"
           >
             {isDarkMode ? (
-              <>
-                <Sun size={15} className="text-amber-400 fill-amber-400/20 flex-shrink-0" />
-                <span className="hidden sm:inline text-[10px] xl:text-[11px] uppercase tracking-wider">Light Mode</span>
-              </>
+              <Sun size={16} className="text-amber-400 fill-amber-400/20" />
             ) : (
-              <>
-                <Moon size={15} className="text-indigo-950 fill-indigo-950/20 flex-shrink-0" />
-                <span className="hidden sm:inline text-[10px] xl:text-[11px] uppercase tracking-wider text-gray-800">Dark Mode</span>
-              </>
+              <Moon size={16} className="text-indigo-950 fill-indigo-950/20" />
             )}
           </button>
 
@@ -100,9 +94,9 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
             href="https://wa.me/918470905123?text=Hello%20Shivlok%20Palace%20Team%2C%20I%20would%20like%20to%20book%20a%20room.%20Please%20share%20availability%20and%20tariffs."
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-block bg-[#cda85c] hover:bg-[#b89448] text-gray-950 font-bold text-[10px] xl:text-xs px-3 lg:px-4 xl:px-5 py-2 xl:py-2.5 rounded-xl transition-all duration-300 tracking-wider uppercase shadow-md hover:scale-105"
+            className="hidden sm:inline-block bg-[#cda85c] hover:bg-[#b89448] text-gray-950 font-bold text-[10px] lg:text-xs xl:text-sm px-4 lg:px-6 xl:px-8 py-2 xl:py-3 rounded-xl transition-all duration-300 tracking-wider uppercase shadow-md hover:scale-105"
           >
-            BOOK YOUR STAY
+            BOOK
           </a>
           
           <button 
