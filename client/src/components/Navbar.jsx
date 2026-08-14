@@ -11,7 +11,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
     { name: 'RESTAURANT', href: '#restaurant' },
     { name: 'FACILITIES', href: '#amenities' },
     { name: 'OFFERS', href: '#offers' },
-    { name: 'CONTACT', href: '#contact' },
+    { name: 'EXPLORE VARANASI', href: '#explore' },
   ];
 
   return (
