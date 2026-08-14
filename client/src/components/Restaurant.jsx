@@ -170,10 +170,10 @@ const Restaurant = () => {
   return (
     <div id="restaurant" className="bg-[#F5F2ED] dark:bg-[#181412] text-gray-900 dark:text-white py-16 md:py-20 overflow-hidden border-t border-b border-gray-200 dark:border-gray-900 transition-colors duration-300 select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+        <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 items-center">
           
           {/* Left Text Block (4 cols) */}
-          <div className="lg:col-span-4 pr-0 lg:pr-4">
+          <div className="xl:col-span-4 pr-0 lg:pr-4">
             <p className="text-[#cda85c] text-[11px] font-bold tracking-[0.2em] uppercase mb-3">
               PURE VEG RESTAURANT · COMING SOON
             </p>
@@ -226,7 +226,7 @@ const Restaurant = () => {
           </div>
 
           {/* Center Main Image (5 cols) — Coming Soon Overlay */}
-          <div className="lg:col-span-5 h-[360px] sm:h-[400px] lg:h-[430px] rounded-2xl overflow-hidden shadow-xl border border-gray-300 dark:border-gray-800 relative group">
+          <div className="xl:col-span-5 h-[360px] sm:h-[400px] lg:h-[430px] rounded-2xl overflow-hidden shadow-xl border border-gray-300 dark:border-gray-800 relative group">
             <img 
               src="/rest_main.png" 
               alt="Shivlok Palace Restaurant Coming Soon" 
@@ -244,7 +244,7 @@ const Restaurant = () => {
           </div>
 
           {/* Right 3 Thumbnails Stack (3 cols) */}
-          <div className="lg:col-span-3 flex flex-col gap-3 h-[360px] sm:h-[400px] lg:h-[430px]">
+          <div className="xl:col-span-3 flex flex-col sm:flex-row xl:flex-col gap-3 h-auto xl:h-[430px]">
             
             <div className="flex-1 rounded-2xl overflow-hidden border border-gray-300 dark:border-gray-800 shadow-md relative group">
               <img src="/rest_thumb1.png" alt="Restaurant Ambiance Preview" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 filter brightness-75" />

@@ -400,7 +400,7 @@ const BookingWidget = () => {
                       WhatsApp
                     </a>
                     <a
-                      href={`mailto:shivlokpalace.vns@gmail.com?subject=${encodeURIComponent(`Reservation Inquiry - ${roomType}`)}&body=${encodeURIComponent(`Hello Shivlok Palace,\n\nI would like to book the ${roomType} from ${checkIn} to ${checkOut}.\n\nPlease let me know the confirmation details.\n\nThank you.`)}`}
+                      href={`mailto:dm.shivlokpalace@gmail.com,shivlokpalace.vns@gmail.com?subject=${encodeURIComponent(`Reservation Inquiry - ${roomType}`)}&body=${encodeURIComponent(`Hello Shivlok Palace,\n\nI would like to book the ${roomType} from ${checkIn} to ${checkOut}.\n\nPlease let me know the confirmation details.\n\nThank you.`)}`}
                       className="bg-[#181a1f] hover:bg-[#202329] text-gray-200 border border-gray-700 font-bold py-2.5 px-4 rounded-xl flex items-center justify-center gap-2 transition-colors text-xs uppercase tracking-wider"
                     >
                       <Mail size={14} className="text-[#cda85c]" />

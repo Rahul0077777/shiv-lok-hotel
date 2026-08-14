@@ -181,10 +181,10 @@ const Rooms = () => {
   return (
     <div id="rooms" className="bg-[#FAF8F5] dark:bg-[#0f1114] py-16 md:py-20 overflow-hidden border-b border-gray-200/40 dark:border-gray-800 transition-colors duration-300 select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col lg:flex-row gap-8 items-start relative">
+        <div className="flex flex-col xl:flex-row gap-8 items-start relative">
           
           {/* Left Text Block */}
-          <div className="lg:w-1/4 pt-4">
+          <div className="xl:w-1/4 pt-4">
             <div className="inline-block border-b-2 border-[#cda85c] pb-1 mb-4">
               <p className="text-[#cda85c] text-[11px] font-bold tracking-[0.2em] uppercase">
                 OUR ROOMS & SUITES
@@ -209,7 +209,7 @@ const Rooms = () => {
           </div>
 
           {/* Right Cards Slider */}
-          <div className="lg:w-3/4 w-full relative">
+          <div className="xl:w-3/4 w-full relative">
             <div 
               ref={scrollContainerRef}
               className="flex overflow-x-auto gap-5 pb-4 pt-1 snap-x hide-scrollbar scroll-smooth"
@@ -314,7 +314,7 @@ const Rooms = () => {
       {/* Full Specs & Booking Modal */}
       {selectedRoom && (
         <div className="fixed inset-0 z-[100] flex items-start justify-center p-4 sm:p-6 pt-32 sm:pt-40 pb-8 bg-gray-950/85 backdrop-blur-md animate-fadeIn overflow-y-auto">
-          <div className="bg-[#121417] border border-gray-800 rounded-3xl max-w-2xl w-full shadow-2xl text-white relative max-h-[75vh] overflow-y-auto my-auto sm:my-0">
+          <div className="bg-[#121417] border border-gray-800 rounded-3xl max-w-2xl w-full shadow-2xl text-white relative max-h-[85vh] overflow-y-auto my-auto sm:my-0">
             
             {/* Modal Header – image strip with thumbnails */}
             <div className="relative h-56 w-full rounded-t-3xl overflow-hidden">

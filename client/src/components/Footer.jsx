@@ -110,7 +110,7 @@ const Footer = () => {
 
                 <div className="flex items-center space-x-3">
                   <Mail size={15} className="text-[#cda85c] flex-shrink-0" />
-                  <a href="mailto:shivlokpalace.vns@gmail.com" className="text-gray-800 dark:text-gray-200 font-bold dark:font-medium hover:text-[#cda85c] transition-colors">shivlokpalace.vns@gmail.com</a>
+                  <a href="mailto:dm.shivlokpalace@gmail.com,shivlokpalace.vns@gmail.com" className="text-gray-800 dark:text-gray-200 font-bold dark:font-medium hover:text-[#cda85c] transition-colors">shivlokpalace.vns@gmail.com</a>
                 </div>
 
                 <div className="flex items-center space-x-3">
@@ -121,7 +121,7 @@ const Footer = () => {
                 <div className="flex items-start space-x-3">
                   <MapPin size={15} className="text-[#cda85c] mt-0.5 flex-shrink-0" />
                   <span className="text-gray-800 dark:text-gray-200 font-bold dark:font-medium leading-tight transition-colors">
-                    D-34/181, Ganesh Mahal Road, Jangambadi, Near Godowlia Chauraha, Varanasi – 221001
+                    D-34/183, Ganesh Mahal Road, Near Godowlia Chauraha, Varanasi - 221001
                   </span>
                 </div>
 
@@ -172,7 +172,7 @@ const Footer = () => {
             {/* Get Directions Button */}
             <div className="flex items-center gap-2 p-2 bg-white dark:bg-[#181a1f] border-t border-gray-200 dark:border-gray-800">
               <a 
-                href="https://www.google.com/maps/dir/?api=1&destination=Shivlok+Palace+Hotel,+D-34%2F181,+Ganesh+Mahal+Road,+Jangambadi,+Near+Godowlia+Chauraha,+Varanasi+221001"
+                href="https://www.google.com/maps/dir/?api=1&destination=Shivlok+Palace+Hotel,+D-34%2F183,+Ganesh+Mahal+Road,+Near+Godowlia+Chauraha,+Varanasi+221001"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex-1 flex items-center justify-center gap-1.5 py-1.5 bg-[#4285F4] hover:bg-[#3367D6] text-white rounded-lg text-[11px] font-bold uppercase tracking-wider transition-all shadow-sm"
@@ -262,22 +262,16 @@ const Footer = () => {
         </div>
 
         {/* Bottom 5-Column Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-start mb-10 text-xs">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 items-start mb-10 text-xs">
           
           {/* Col 1: Logo & Tagline */}
           <div className="pr-2">
-            <a href="#hero" className="flex items-center space-x-3 mb-4 cursor-pointer group">
-              <div className="bg-stone-900 p-1 rounded-2xl border-2 border-[#cda85c]/60 shadow-xl group-hover:scale-105 transition-transform flex items-center justify-center">
-                <img 
-                  src="/logo.jpg" 
-                  alt="Shivlok Palace Logo" 
-                  className="h-14 sm:h-16 w-auto object-contain rounded-xl" 
-                />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-serif text-xl tracking-widest text-[#cda85c] font-extrabold leading-none">SHIVLOK</span>
-                <span className="text-[9px] tracking-[0.2em] text-gray-600 dark:text-gray-400 mt-1 font-bold">PALACE HOTEL</span>
-              </div>
+            <a href="#hero" className="inline-block mb-3 cursor-pointer group">
+              <img 
+                src="/logo.png" 
+                alt="Shivlok Palace Logo" 
+                className="h-16 sm:h-20 md:h-24 w-auto object-contain transition-all duration-300 group-hover:scale-105 filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.12)] dark:drop-shadow-[0_0_12px_rgba(255,255,255,0.8)]" 
+              />
             </a>
             <p className="text-gray-600 dark:text-gray-400 text-xs leading-relaxed transition-colors">
               Luxury Stay in the Spiritual Capital of India

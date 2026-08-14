@@ -39,7 +39,7 @@ const Hero = () => {
   };
 
   return (
-    <div className="relative w-full h-[75vh] sm:h-[85vh] min-h-[520px] sm:min-h-[620px] flex items-center bg-black overflow-hidden select-none">
+    <div className="relative w-full h-[75vh] sm:h-[85vh] min-h-[520px] lg:min-h-[560px] xl:min-h-[620px] flex items-center bg-black overflow-hidden select-none">
       
       {/* Background Image Carousel with Smooth Fade */}
       {slides.map((slide, index) => (
@@ -81,7 +81,7 @@ const Hero = () => {
             Welcome to Kashi
           </p>
           
-          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white leading-[1.15] mb-4 sm:mb-5 tracking-wide drop-shadow-md">
+          <h1 className="font-serif text-3xl sm:text-5xl lg:text-5xl xl:text-6xl text-white leading-[1.15] mb-4 sm:mb-5 tracking-wide drop-shadow-md">
             Experience Luxury<br />
             in the Spiritual Capital<br />
             <span className="text-[#cda85c] italic font-serif">of India</span>

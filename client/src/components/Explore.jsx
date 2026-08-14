@@ -131,7 +131,7 @@ const Explore = () => {
           <p className="text-[10px] font-bold text-gray-500 dark:text-gray-400 tracking-[0.2em] uppercase mb-4">
             🗺️ Explore Varanasi – Photo Gallery
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
             {places.map((place, index) => (
               <div 
                 key={index} 
@@ -195,7 +195,7 @@ const Explore = () => {
           <div>
             <p className="text-white/80 text-[10px] font-bold tracking-[0.2em] uppercase mb-1">🗺️ Google Maps</p>
             <h3 className="text-white text-lg sm:text-xl font-serif font-bold">Find Your Way to Shivlok Palace</h3>
-            <p className="text-white/70 text-xs mt-1">D-34/181, Ganesh Mahal Road, Near Godowlia Chauraha, Varanasi – 221001</p>
+            <p className="text-white/70 text-xs mt-1">D-34/183, Ganesh Mahal Road, Near Godowlia Chauraha, Varanasi - 221001</p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
             <a

@@ -33,7 +33,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
           </div>
           <div className="hidden md:flex items-center space-x-1.5 font-medium">
             <Mail size={13} className="text-[#cda85c]" />
-            <a href="mailto:shivlokpalace.vns@gmail.com" className="hover:text-[#cda85c] transition-colors">shivlokpalace.vns@gmail.com</a>
+            <a href="mailto:dm.shivlokpalace@gmail.com,shivlokpalace.vns@gmail.com" className="hover:text-[#cda85c] transition-colors">shivlokpalace.vns@gmail.com</a>
           </div>
         </div>
 
@@ -52,25 +52,19 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
       </div>
 
       {/* Main Navigation Bar */}
-      <div className="bg-white dark:bg-[#121417] text-gray-900 dark:text-white px-4 sm:px-6 lg:px-8 py-3.5 flex justify-between items-center border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+      <div className="bg-white dark:bg-[#121417] text-gray-900 dark:text-white px-4 sm:px-6 lg:px-8 py-2 md:py-2.5 flex justify-between items-center border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
         
         {/* Logo */}
-        <a href="#hero" className="flex items-center space-x-3 group">
-          <div className="bg-stone-900 p-1 rounded-2xl border-2 border-[#cda85c]/60 shadow-xl group-hover:scale-105 transition-transform flex items-center justify-center">
-            <img 
-              src="/logo.jpg" 
-              alt="Shivlok Palace Logo" 
-              className="h-10 sm:h-14 md:h-16 w-auto object-contain rounded-xl" 
-            />
-          </div>
-          <div className="flex flex-col">
-            <span className="font-serif text-xl sm:text-2xl tracking-[0.2em] text-[#cda85c] font-extrabold leading-none">SHIVLOK</span>
-            <span className="text-[9px] tracking-[0.2em] text-gray-500 dark:text-gray-400 mt-1 font-bold">PALACE HOTEL</span>
-          </div>
+        <a href="#hero" className="flex items-center group py-0.5 ml-2 lg:ml-8 xl:ml-12">
+          <img 
+            src="/logo.png" 
+            alt="Shivlok Palace Logo" 
+            className="h-12 sm:h-14 md:h-16 w-auto object-contain transition-all duration-300 scale-[1.15] md:scale-125 group-hover:scale-[1.25] md:group-hover:scale-[1.35] filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.12)] dark:drop-shadow-[0_0_12px_rgba(255,255,255,0.8)]" 
+          />
         </a>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center space-x-6 text-xs font-bold tracking-wider">
+        <nav className="hidden lg:flex items-center space-x-3 xl:space-x-6 text-[10px] lg:text-[11px] xl:text-xs font-bold tracking-wider">
           {navLinks.map((link, index) => (
             <a 
               key={index}
@@ -90,17 +84,17 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
           <button
             onClick={toggleDarkMode}
             aria-label="Toggle Dark Mode"
-            className="p-2 sm:px-3 sm:py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800/80 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-amber-400 font-bold text-xs flex items-center gap-1.5 transition-all duration-300 cursor-pointer shadow-sm"
+            className="p-2 sm:px-2.5 xl:px-3 sm:py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800/80 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-amber-400 font-bold text-[10px] xl:text-xs flex items-center gap-1.5 transition-all duration-300 cursor-pointer shadow-sm"
           >
             {isDarkMode ? (
               <>
                 <Sun size={15} className="text-amber-400 fill-amber-400/20 flex-shrink-0" />
-                <span className="hidden sm:inline text-[11px] uppercase tracking-wider">Light Mode</span>
+                <span className="hidden sm:inline text-[10px] xl:text-[11px] uppercase tracking-wider">Light Mode</span>
               </>
             ) : (
               <>
                 <Moon size={15} className="text-indigo-950 fill-indigo-950/20 flex-shrink-0" />
-                <span className="hidden sm:inline text-[11px] uppercase tracking-wider text-gray-800">Dark Mode</span>
+                <span className="hidden sm:inline text-[10px] xl:text-[11px] uppercase tracking-wider text-gray-800">Dark Mode</span>
               </>
             )}
           </button>
@@ -109,7 +103,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
             href="https://wa.me/918470905123?text=Hello%20Shivlok%20Palace%20Team%2C%20I%20would%20like%20to%20book%20a%20room.%20Please%20share%20availability%20and%20tariffs."
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-block bg-[#cda85c] hover:bg-[#b89448] text-gray-950 font-bold text-xs px-5 py-2.5 rounded-xl transition-all duration-300 tracking-wider uppercase shadow-md hover:scale-105"
+            className="hidden sm:inline-block bg-[#cda85c] hover:bg-[#b89448] text-gray-950 font-bold text-[10px] xl:text-xs px-4 xl:px-5 py-2 xl:py-2.5 rounded-xl transition-all duration-300 tracking-wider uppercase shadow-md hover:scale-105"
           >
             BOOK YOUR STAY
           </a>

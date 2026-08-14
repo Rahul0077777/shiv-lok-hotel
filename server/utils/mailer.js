@@ -66,7 +66,7 @@ const adminInquiryTemplate = ({ name, email, phone, message, date }) => `
     </div>
 
     <div style="background:#1a1208;border-radius:0 0 12px 12px;padding:16px 32px;text-align:center;">
-      <p style="color:#7a6f5e;margin:0;font-size:11px;">Shivlok Palace Hotel · Varanasi, India · shivlokpalace@gmail.com</p>
+      <p style="color:#7a6f5e;margin:0;font-size:11px;">Shivlok Palace Hotel · Varanasi, India · shivlokpalace.vns@gmail.com</p>
     </div>
 
   </div>
@@ -103,7 +103,7 @@ const guestConfirmationTemplate = ({ name }) => `
       <div style="background:#faf8f5;border:1px solid #ede8e0;border-radius:8px;padding:20px;text-align:left;margin-bottom:28px;">
         <p style="margin:0 0 10px;color:#7a6f5e;font-size:12px;font-weight:700;letter-spacing:1px;">FOR IMMEDIATE ASSISTANCE</p>
         <p style="margin:0 0 6px;color:#1a1208;font-size:14px;">📞 <a href="tel:+918470905123" style="color:#cda85c;text-decoration:none;font-weight:700;">+91 84709 05123</a> (Reservation)</p>
-        <p style="margin:0;color:#1a1208;font-size:14px;">✉️ <a href="mailto:shivlokpalace@gmail.com" style="color:#cda85c;text-decoration:none;font-weight:700;">shivlokpalace@gmail.com</a></p>
+        <p style="margin:0;color:#1a1208;font-size:14px;">✉️ <a href="mailto:shivlokpalace.vns@gmail.com" style="color:#cda85c;text-decoration:none;font-weight:700;">shivlokpalace.vns@gmail.com</a></p>
       </div>
 
       <p style="color:#9b8f7a;font-size:12px;line-height:1.7;margin:0;">
@@ -157,7 +157,7 @@ const newsletterWelcomeTemplate = () => `
       </div>
 
       <p style="color:#9b8f7a;font-size:11px;margin:0;">
-        You can unsubscribe anytime by contacting shivlokpalace@gmail.com
+        You can unsubscribe anytime by contacting shivlokpalace.vns@gmail.com
       </p>
     </div>
 
@@ -246,7 +246,7 @@ const adminBookingTemplate = ({ name, email, phone, checkIn, checkOut, roomType,
     </div>
 
     <div style="background:#1a1208;border-radius:0 0 12px 12px;padding:16px 32px;text-align:center;">
-      <p style="color:#7a6f5e;margin:0;font-size:11px;">Shivlok Palace Hotel · Varanasi, India · shivlokpalace@gmail.com</p>
+      <p style="color:#7a6f5e;margin:0;font-size:11px;">Shivlok Palace Hotel · Varanasi, India · shivlokpalace.vns@gmail.com</p>
     </div>
 
   </div>
@@ -458,7 +458,7 @@ const adminTableTemplate = ({ name, email, phone, date, time, guests, occasion, 
       </div>
     </div>
     <div style="background:#1a1208;border-radius:0 0 12px 12px;padding:16px 32px;text-align:center;">
-      <p style="color:#7a6f5e;margin:0;font-size:11px;">Shivlok Palace Hotel · Varanasi, India · shivlokpalace@gmail.com</p>
+      <p style="color:#7a6f5e;margin:0;font-size:11px;">Shivlok Palace Hotel · Varanasi, India · shivlokpalace.vns@gmail.com</p>
     </div>
   </div>
 </body>
