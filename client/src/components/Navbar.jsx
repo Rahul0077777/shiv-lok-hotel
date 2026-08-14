@@ -22,7 +22,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
         <div className="flex items-center space-x-5">
           <div className="flex items-center space-x-1.5">
             <MapPin size={13} className="text-[#cda85c]" />
-            <span className="hidden sm:inline font-medium">D-34/183, Ganesh Mahal Road, Near Godowlia Chauraha, Varanasi – 221001</span>
+            <span className="hidden sm:inline font-medium">D-34/183 Ganesh Mahal Road, Jangamwadi Rd, near Godowlia, Chauraha, Varanasi, Uttar Pradesh 221001</span>
           </div>
           <div className="flex items-center space-x-1.5 font-medium">
             <Phone size={13} className="text-[#cda85c]" />

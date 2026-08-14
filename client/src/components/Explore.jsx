@@ -195,7 +195,7 @@ const Explore = () => {
           <div>
             <p className="text-white/80 text-[10px] font-bold tracking-[0.2em] uppercase mb-1">🗺️ Google Maps</p>
             <h3 className="text-white text-lg sm:text-xl font-serif font-bold">Find Your Way to Shivlok Palace</h3>
-            <p className="text-white/70 text-xs mt-1">D-34/183, Ganesh Mahal Road, Near Godowlia Chauraha, Varanasi - 221001</p>
+            <p className="text-white/70 text-xs mt-1">D-34/183 Ganesh Mahal Road, Jangamwadi Rd, near Godowlia, Chauraha, Varanasi, Uttar Pradesh 221001</p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
             <a

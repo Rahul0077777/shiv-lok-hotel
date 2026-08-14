@@ -121,7 +121,7 @@ const Footer = () => {
                 <div className="flex items-start space-x-3">
                   <MapPin size={15} className="text-[#cda85c] mt-0.5 flex-shrink-0" />
                   <span className="text-gray-800 dark:text-gray-200 font-bold dark:font-medium leading-tight transition-colors">
-                    D-34/183, Ganesh Mahal Road, Near Godowlia Chauraha, Varanasi - 221001
+                    D-34/183 Ganesh Mahal Road, Jangamwadi Rd, near Godowlia, Chauraha, Varanasi, Uttar Pradesh 221001
                   </span>
                 </div>
 
@@ -157,7 +157,7 @@ const Footer = () => {
             <div className="relative flex-1 h-[160px] sm:h-[170px]">
               <iframe 
                 title="Shivlok Palace Map Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.3!2d82.9739!3d25.3173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zShivlok+Palace+Hotel+Varanasi!5e0!3m2!1sen!2sin!4v1" 
+                src="https://maps.google.com/maps?q=D-34/183%20Ganesh%20Mahal%20Road,%20Jangamwadi%20Rd,%20near%20Godowlia,%20Chauraha,%20Varanasi,%20Uttar%20Pradesh%20221001&t=&z=16&ie=UTF8&iwloc=&output=embed" 
                 className="w-full h-full border-0"
                 allowFullScreen="" 
                 loading="lazy" 
