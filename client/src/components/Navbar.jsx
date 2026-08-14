@@ -10,10 +10,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
     { name: 'ROOMS', href: '#rooms' },
     { name: 'RESTAURANT', href: '#restaurant' },
     { name: 'FACILITIES', href: '#amenities' },
-    { name: 'POLICIES', href: '#policies' },
     { name: 'GALLERY', href: '#gallery' },
-    { name: 'EXPLORE VARANASI', href: '#explore' },
-    { name: 'REVIEWS', href: '#reviews' },
     { name: 'CONTACT', href: '#contact' },
   ];
 
@@ -52,10 +49,10 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
       </div>
 
       {/* Main Navigation Bar */}
-      <div className="bg-white dark:bg-[#121417] text-gray-900 dark:text-white px-4 sm:px-6 lg:px-8 py-2 md:py-2.5 flex justify-between items-center border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
+      <div className="bg-white dark:bg-[#121417] text-gray-900 dark:text-white px-3 sm:px-6 lg:px-4 xl:px-8 py-2 md:py-2.5 flex justify-between items-center border-b border-gray-200 dark:border-gray-800 transition-colors duration-300">
         
         {/* Logo */}
-        <a href="#hero" className="flex items-center group py-0.5 ml-2 lg:ml-8 xl:ml-12">
+        <a href="#hero" className="flex items-center group py-0.5 ml-2 lg:ml-4 xl:ml-12">
           <img 
             src="/logo.png" 
             alt="Shivlok Palace Logo" 
@@ -64,7 +61,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
         </a>
 
         {/* Desktop Nav Links */}
-        <nav className="hidden lg:flex items-center space-x-3 xl:space-x-6 text-[10px] lg:text-[11px] xl:text-xs font-bold tracking-wider">
+        <nav className="hidden lg:flex items-center space-x-2.5 lg:space-x-4 xl:space-x-6 text-[10px] lg:text-[10px] xl:text-xs font-bold tracking-wider">
           {navLinks.map((link, index) => (
             <a 
               key={index}
@@ -84,7 +81,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
           <button
             onClick={toggleDarkMode}
             aria-label="Toggle Dark Mode"
-            className="p-2 sm:px-2.5 xl:px-3 sm:py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800/80 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-amber-400 font-bold text-[10px] xl:text-xs flex items-center gap-1.5 transition-all duration-300 cursor-pointer shadow-sm"
+            className="p-1.5 sm:px-2.5 xl:px-3 sm:py-2 rounded-xl border border-gray-300 dark:border-gray-700 bg-gray-100 dark:bg-gray-800/80 hover:bg-gray-200 dark:hover:bg-gray-700 text-gray-800 dark:text-amber-400 font-bold text-[9px] lg:text-[10px] xl:text-xs flex items-center gap-1.5 transition-all duration-300 cursor-pointer shadow-sm"
           >
             {isDarkMode ? (
               <>
@@ -103,7 +100,7 @@ const Navbar = ({ isDarkMode, toggleDarkMode }) => {
             href="https://wa.me/918470905123?text=Hello%20Shivlok%20Palace%20Team%2C%20I%20would%20like%20to%20book%20a%20room.%20Please%20share%20availability%20and%20tariffs."
             target="_blank"
             rel="noopener noreferrer"
-            className="hidden sm:inline-block bg-[#cda85c] hover:bg-[#b89448] text-gray-950 font-bold text-[10px] xl:text-xs px-4 xl:px-5 py-2 xl:py-2.5 rounded-xl transition-all duration-300 tracking-wider uppercase shadow-md hover:scale-105"
+            className="hidden sm:inline-block bg-[#cda85c] hover:bg-[#b89448] text-gray-950 font-bold text-[10px] xl:text-xs px-3 lg:px-4 xl:px-5 py-2 xl:py-2.5 rounded-xl transition-all duration-300 tracking-wider uppercase shadow-md hover:scale-105"
           >
             BOOK YOUR STAY
           </a>

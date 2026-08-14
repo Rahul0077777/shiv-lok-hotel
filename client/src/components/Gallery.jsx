@@ -72,7 +72,7 @@ const Gallery = () => {
         </div>
 
         {/* 6 Grid Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-4">
           {images.map((img, index) => (
             <div
               key={index}
